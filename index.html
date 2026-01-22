@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - [Tu Nombre]</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Tu Nombre Completo</h1>
+        <p>Desarrollador Web & Entusiasta de Hardware</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Sobre mí</h2>
+            <p>Estudiante apasionado por la tecnología, el ensamblaje de PC y la programación. Busco oportunidades para aplicar mis conocimientos en desarrollo web.</p>
+        </section>
+
+        <section class="card">
+            <h2>Habilidades Técnicas</h2>
+            <ul>
+                <li>HTML5 / CSS3 / JavaScript</li>
+                <li>Ensamblaje y Mantenimiento de PC (Hardware)</li>
+                <li>Git / GitHub</li>
+                <li>Inglés Técnico</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Contacto</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" required placeholder="Escribe tu mensaje aquí"></textarea>
+                </div>
+
+                <button type="submit" id="btn-submit">Enviar Mensaje</button>
+                <p id="status-msg" style="margin-top: 10px; font-size: 0.9em;"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Tu Nombre. Alojado en Netlify.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const btn = document.getElementById('btn-submit');
+            const status = document.getElementById('status-msg');
+            const data = {
+                nombre: document.getElementById('nombre').value,
+                mensaje: document.getElementById('mensaje').value
+            };
+
+            btn.disabled = true;
+            btn.textContent = "Enviando...";
+
+            try {
+                // Llamada a la función Serverless
+                const response = await fetch('/.netlify/functions/send-discord', {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    status.textContent = "✅ Mensaje enviado correctamente.";
+                    status.style.color = "lightgreen";
+                    document.getElementById('contact-form').reset();
+                } else {
+                    throw new Error('Error del servidor');
+                }
+            } catch (error) {
+                status.textContent = "❌ Error al enviar. Intenta más tarde.";
+                status.style.color = "red";
+                console.error(error);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Enviar Mensaje";
+            }
+        });
+    </script>
+</body>
+</html>
