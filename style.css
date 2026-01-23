@@ -419,15 +419,52 @@ body.dark-mode .skills-list i {
     color: var(--accent);
 }
 
-/* Estilos para el botón de correo directo */
-.email-btn {
-    text-decoration: none; /* Quita el subrayado feo de los links */
-    display: inline-flex;  /* Para centrar el icono y texto */
-    justify-content: center;
-    max-width: 300px;      /* Que no sea gigante */
-    margin: 0 auto;        /* Centrado horizontal */
+/* --- CORRECCIÓN DE BOTONES CENTRADOS --- */
+
+/* Contenedor flexible para los botones */
+.buttons-wrapper {
+    display: flex;
+    gap: 20px;               /* Espacio entre botones */
+    justify-content: center; /* Centrado horizontal perfecto */
+    align-items: center;
+    flex-wrap: wrap;         /* Para que se acomoden en celulares */
+    width: 100%;
 }
 
+/* Estilos base para AMBOS botones */
+.email-btn, 
+.btn-whatsapp {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Centra el texto DENTRO del botón */
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: transform 0.2s, background 0.2s;
+    min-width: 180px;        /* Opcional: Para que midan lo mismo */
+    margin: 0;               /* IMPORTANTE: Quitamos márgenes automáticos */
+}
+
+/* Color específico Email (Azul) */
+.email-btn {
+    background-color: var(--accent); /* Usa tu azul de siempre */
+    color: white;
+}
 .email-btn:hover {
-    color: white; /* Asegura que el texto siga blanco al pasar el mouse */
+    background-color: #0284c7;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Color específico WhatsApp (Verde) */
+.btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+.btn-whatsapp:hover {
+    background-color: #128C7E;
+    color: white;
+    transform: translateY(-2px);
 }
