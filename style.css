@@ -418,3 +418,16 @@ body.dark-mode h3 i,
 body.dark-mode .skills-list i {
     color: var(--accent);
 }
+
+/* Estilos para el botón de correo directo */
+.email-btn {
+    text-decoration: none; /* Quita el subrayado feo de los links */
+    display: inline-flex;  /* Para centrar el icono y texto */
+    justify-content: center;
+    max-width: 300px;      /* Que no sea gigante */
+    margin: 0 auto;        /* Centrado horizontal */
+}
+
+.email-btn:hover {
+    color: white; /* Asegura que el texto siga blanco al pasar el mouse */
+}

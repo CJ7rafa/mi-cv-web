@@ -51,43 +51,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejecutar una vez al inicio para mostrar lo que ya se ve
     revealOnScroll();
 
-    // --- 3. FORMULARIO CON EFECTO DE CARGA (Netlify) ---
-    const form = document.getElementById('contact-form');
-    const statusBox = document.getElementById('status-container');
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.innerHTML;
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        // UI Loading
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
-        statusBox.classList.add('hidden');
-
-        const formData = new FormData(form);
-
-        try {
-            await fetch('/', {
-                method: 'POST',
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString()
-            });
-
-            // Éxito
-            statusBox.className = 'status-box success';
-            statusBox.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado correctamente!';
-            statusBox.classList.remove('hidden');
-            form.reset();
-
-        } catch (error) {
-            // Error
-            statusBox.className = 'status-box error';
-            statusBox.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error al enviar. Intenta de nuevo.';
-            statusBox.classList.remove('hidden');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
-        }
-    });
 });
