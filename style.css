@@ -14,6 +14,41 @@
   --loading-text: #0369a1;
 }
 
+/* --- FOTO DE PERFIL: CÍRCULO COMPLETO (TARJETA + FOTO) --- */
+
+.profile-container {
+    /* Tamaño del circulo */
+    width: 325px;
+    height: 325px;
+    margin: 0 auto 30px auto;
+
+    border-radius: 50% !important;
+
+    padding: 12px;
+    box-sizing: border-box; /* Asegura que el padding no deforme el tamaño total */
+    background-color: var(--card-bg, #fff); /* Fondo blanco */
+    overflow: hidden; /* Recorta todo lo que se salga del círculo */
+
+    /* Centrar la imagen dentro del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para la imagen dentro del círculo */
+.profile-container img {
+    width: 100%;
+    height: 100%;
+    /* 'cover' hace que la foto llene el espacio sin estirarse feo */
+    object-fit: cover;
+    /* Redondeamos la imagen también por seguridad */
+    border-radius: 50%;
+}
+
+p:not(.no-justify) {
+    text-align: justify;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -74,6 +109,7 @@ body {
   color: var(--accent);
 }
 
+
 /* Layout */
 .main-layout {
   display: grid;
@@ -99,8 +135,18 @@ body {
   margin-bottom: 24px;
 }
 
+.cardfoto {
+  background: #626973;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
 .padding-lg {
   padding: 32px;
+  width: 80%;
 }
 
 .section-title {
@@ -251,6 +297,7 @@ h3 i {
   color: white;
   border: none;
   padding: 12px 24px;
+  margin-top: 15px;
   font-size: 1rem;
   font-weight: 700;
   border-radius: 8px;
@@ -314,7 +361,7 @@ h3 i {
 
 /* Footer */
 .footer {
-  background: white;
+  background: var(--card-bg);
   border-top: 1px solid var(--border);
   padding: 30px 0;
   text-align: center;
@@ -561,3 +608,416 @@ body.dark-mode .skills-list i {
 .tag a:hover {
     opacity: 0.7;          /* Un pequeño efecto visual */
 }
+
+/* --- ESTILOS DEL CARRUSEL --- */
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Riel que se mueve */
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+/* Imagen del proyecto */
+.project-img {
+    width: 100%;
+    /* 1. Igualamos la altura con tu mini-slider (estaba en 150px en tu otro código) */
+    height: 150px; 
+
+    /* 2. Para que el video se vea entero y no recortado */
+    object-fit: contain; 
+    
+    /* 3. El "padding" es lo que lo hace ver pequeño. 
+       NOTA: En tu código anterior tenías 200px (que es muchísimo). 
+       Te recomiendo 15px o 20px para que se vea elegante. */
+    padding: 20px; 
+    
+    /* 4. Importante para que el padding no rompa el tamaño */
+    box-sizing: border-box;
+
+    /* 5. Color de fondo para rellenar los huecos (igual que tus imágenes) */
+    background-color: var(--card-bg); 
+    
+    border-bottom: 1px solid var(--border);
+}
+
+/* Texto del proyecto */
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.project-tags {
+    margin-top: 15px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Botones Flechas */
+.carousel-btn {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.carousel-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.prev-btn { left: -20px; }
+.next-btn { right: -20px; }
+
+/* Botones pequeños para móviles */
+@media (max-width: 768px) {
+    .prev-btn { left: -10px; }
+    .next-btn { right: -10px; }
+}
+
+/* Puntos de navegación */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #cbd5e1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: var(--accent);
+}
+
+/* Modo oscuro específico para el carrusel */
+body.dark-mode .carousel-btn {
+    background: #374151;
+    color: white;
+    border-color: #4b5563;
+}
+body.dark-mode .carousel-btn:hover {
+    background: var(--accent);
+}/* --- ESTILOS DEL CARRUSEL --- */
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ventana que recorta lo que no se ve */
+.carousel-slide-wrapper {
+    overflow: hidden;
+    width: 100%;
+    
+    /* --- CAMBIO CLAVE 1: Límite de ancho --- */
+    max-width: 80%; /* Evita que la tarjeta sea gigante */
+    margin: 0 auto;   /* Centra la tarjeta en el contenedor */
+    /* --------------------------------------- */
+    
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Riel que se mueve */
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+/* Cada tarjeta de proyecto */
+.project-card {
+    min-width: 100%; /* Ocupa todo el ancho disponible */
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+}
+
+/* Texto del proyecto */
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.project-tags {
+    margin-top: 15px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Botones Flechas */
+.carousel-btn {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.carousel-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.prev-btn { left: -20px; }
+.next-btn { right: -20px; }
+
+/* Botones pequeños para móviles */
+@media (max-width: 768px) {
+    .prev-btn { left: -10px; }
+    .next-btn { right: -10px; }
+}
+
+/* Puntos de navegación */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #cbd5e1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: var(--accent);
+}
+
+/* Modo oscuro específico para el carrusel */
+body.dark-mode .carousel-btn {
+    background: #374151;
+    color: white;
+    border-color: #4b5563;
+}
+body.dark-mode .carousel-btn:hover {
+    background: var(--accent);
+}
+
+/* Centrado Universal para tu contenedor */
+.container-proyecto {
+    display: flex;           /* Activa el modo flexible */
+    justify-content: center; /* Centra horizontalmente (izquierda-derecha) */
+    align-items: center;     /* Centra verticalmente (arriba-abajo) */
+    flex-direction: column;  /* Asegura que los elementos se apilen uno sobre otro */
+    width: 100%;             /* Que ocupe todo el ancho disponible */
+    margin: 0 auto;          /* Un refuerzo extra para centrar el bloque mismo */
+    text-align: center;      /* Centra los textos internos por si acaso */
+}
+
+/* --- ESTILOS UNIFICADOS CORREGIDOS --- */
+
+.mini-slider,
+video.project-img {
+    width: 100%;
+    height: 250px; /* Altura controlada (ni muy chica ni muy grande) */
+    
+    background-color: var(--card-bg); /* El fondo negro que te sirve de marco */
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-img,
+video.project-img {
+    width: 100%;
+    height: 100%;
+    
+    /* 1. IMPIDE QUE SE CORTE LA IMAGEN/VIDEO */
+    object-fit: contain; 
+    
+    /* 2. HACE QUE EL VIDEO SE VEA MÁS PEQUEÑO (Visualmente) */
+    /* El video flotará en medio del fondo negro. 
+       Sube a 40px si lo quieres aún más chico. */
+    padding: 0px; 
+    
+    box-sizing: border-box; /* Vital para que el padding no rompa la caja */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Reglas del slider (sin cambios) */
+.slide-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; 
+}
+
+.slide-img.active {
+    opacity: 1; 
+    z-index: 1;
+}
+
+video.project-img {
+    display: block;
+}
+
+.feedback-section {
+  margin: 30px;
+    border: 2px dashed var(--accent); /* Borde punteado para que parezca "en construcción/mejora" */
+    background: rgba(14, 165, 233, 0.03); /* Un fondo azul muy suave */
+}
+
+body.dark-mode .feedback-section {
+    background: rgba(14, 165, 233, 0.05);
+}
+
+/* --- GRID DE FEEDBACK (BOTONES MÁGICOS) --- */
+
+.feedback-grid {
+    display: grid;
+    /* Crea columnas automáticas de mínimo 200px */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.feedback-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none; /* Quita el subrayado del link */
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Iconos grandes */
+.feedback-item i {
+    font-size: 2rem;
+    color: var(--accent); /* Tu azul favorito */
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+/* Título del botón */
+.feedback-item span {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* Texto pequeño explicativo */
+.feedback-item small {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* --- EFECTOS HOVER (AL PASAR EL MOUSE) --- */
+.feedback-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px); /* Se levanta un poco */
+    box-shadow: 0 5px 15px rgba(14, 165, 233, 0.15);
+    background: #f0f9ff; /* Fondo azul muy clarito */
+}
+
+.feedback-item:hover i {
+    transform: scale(1.1); /* El icono crece */
+}
+
+/* Estilo especial para el botón "Otro" (Opcional) */
+.feedback-item.other:hover {
+    background: #f0fdf4; /* Verde muy clarito */
+    border-color: #25D366; /* Color WhatsApp */
+}
+.feedback-item.other:hover i {
+    color: #25D366;
+}
+
+/* Ajuste para Modo Oscuro */
+body.dark-mode .feedback-item {
+    background: var(--card-bg);
+    border-color: var(--border);
+}
+body.dark-mode .feedback-item:hover {
+    background: #1e293b; /* Un gris un poco más claro que el fondo */
+    border-color: var(--accent);
+}
+
+.contacto {
+    width: 80%;
+    
+    /* --- LA LÍNEA MÁGICA --- */
+    margin: 0 auto; 
+    /* "0" arriba/abajo, "auto" a los lados (esto lo centra) */
+    
+    /* Opcional: Si quieres separarlo un poco de lo de arriba */
+    margin-top: 40px; 
+    margin-bottom: 40px;
+    
+    /* Tip Pro: Evita que se vea gigante en pantallas ultra anchas */
+    max-width: 1000px; 
+    display: block; /* Asegura que se comporte como bloque */
+
+}
+

@@ -51,4 +51,79 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejecutar una vez al inicio para mostrar lo que ya se ve
     revealOnScroll();
 
+    // --- 4. CARRUSEL DE PROYECTOS ---
+    const track = document.getElementById('track');
+    const slides = Array.from(track.children);
+    const nextButton = document.getElementById('nextBtn');
+    const prevButton = document.getElementById('prevBtn');
+    const dotsNav = document.getElementById('dotsNav');
+
+    // Crear los puntitos (dots) automáticamente según la cantidad de slides
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        // Click en el punto
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+        });
+        dotsNav.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsNav.children);
+    let currentSlide = 0;
+
+    const updateCarousel = () => {
+        // Mover el carrusel
+        const amountToMove = -100 * currentSlide;
+        track.style.transform = `translateX(${amountToMove}%)`;
+
+        // Actualizar puntos
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
+    };
+
+    // Botón Siguiente
+    nextButton.addEventListener('click', () => {
+        if (currentSlide === slides.length - 1) {
+            currentSlide = 0; // Vuelve al inicio (Loop)
+        } else {
+            currentSlide++;
+        }
+        updateCarousel();
+    });
+
+    // Botón Anterior
+    prevButton.addEventListener('click', () => {
+        if (currentSlide === 0) {
+            currentSlide = slides.length - 1; // Va al final
+        } else {
+            currentSlide--;
+        }
+        updateCarousel();
+    });
+
+    // --- 5. MINI-SLIDER AUTOMÁTICO ---
+    const miniSliders = document.querySelectorAll('.mini-slider');
+
+    miniSliders.forEach(slider => {
+        const images = slider.querySelectorAll('.slide-img');
+        
+        // Verificamos que existan imágenes para evitar errores
+        if (images.length > 0) {
+            let index = 0; 
+
+            setInterval(() => {
+                // 1. Ocultar imagen actual
+                images[index].classList.remove('active');
+
+                // 2. Calcular siguiente
+                index = (index + 1) % images.length;
+
+                // 3. Mostrar siguiente
+                images[index].classList.add('active');
+            }, 4000); // Cambiado a 4000ms (4 seg) para que sea un poco más dinámico
+        }
+    });
 });

@@ -25,7 +25,7 @@
             </button>
             
             <h1>Rafael Alfonso Olvera Vera</h1>
-            <p class="subtitle">Programador / Estudiante Universitario / Entusiasta de Hardware</p>
+            <p class="subtitle no-justify">Programador / Estudiante Universitario / Entusiasta de Hardware</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/rafael-olvera-vera-682b35306" target="_blank"><i class="fab fa-linkedin"></i> <span>LinkedIn</span></a>
                 <a href="https://github.com/CJ7rafa" target="_blank"><i class="fab fa-github"></i> <span>GitHub</span></a>
@@ -36,15 +36,15 @@
 
     <div class="container main-layout">
         <aside class="sidebar">
-            <section class="card reveal">
-                <img src="img/CV_Rafael.png" alt="Foto de Rafael Olvera" width="400" height="400" style="width:100%; height:auto; border-radius:8px;">
+            <section class="cardfoto reveal profile-container">
+                <img src="img/CV_Rafael.png" alt="Foto de Rafael Olvera">
             </section>
 
             <section class="card reveal">
                 <h3><i class="fas fa-address-card"></i> Contacto</h3>
-                <div class="item flex-between"> <span>+593-96-167-6395</span> </div>
-                <div class="item flex-between"><a href="mailto:rafaelolver2006@gmail.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"> <span>rafaelolver2006@gmail.com</span> </a></div>
-                <div class="item flex-between"> <span>Km 8 ½ Vía Daule, Coop. Juan Montalvo</span> </div>
+                <div class="item flex-between">  <span><i class="fas fa-phone-alt"></i> +593-96-167-6395</span> </div>
+                <div class="item flex-between"><a href="mailto:rafaelolver2006@gmail.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">  <span><i class="fas fa-envelope"></i> rafaelolver2006@gmail.com</span> </a></div>
+                <div class="item flex-between">  <span><i class="fas fa-map-marker-alt"></i>  Guayaquil, Ecuador </span> </div>
 
             </section>
 
@@ -63,7 +63,7 @@
 
                 <div class="item">
                     <p class="bold">Fundación Carlos Slim</p>
-                    <p class="muted">Curso de Programador de Microcontroladores</p>
+                    <p class="muted no-justify">Curso de Programador de Microcontroladores</p>
                     <a href="https://capacitateparaelempleo.org/verifica/7692d437-995d-44d9-864c-e28dfc9f22fc/d7d4afbc-1455-47c5-83d5-9937ba13ab94" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
                         <p class="tag blue"><span>Certificado</span></p>
                     </a>
@@ -84,10 +84,13 @@
         </aside>
 
         <main class="content">
-            <section class="card padding-lg reveal">
+            <section class="card reveal">
                 <h2 class="section-title">Sobre Mí</h2>
                 <div class="bio">
-                    <p>Estudiante de 19 años apasionado por la tecnología, con experiencia sólida en el ensamblaje y mantenimiento de hardware. Actualmente, me encuentro profundizando mis conocimientos en el desarrollo <strong>backend</strong>, estructuras de datos y resolución de problemas algorítmicos.</p>
+                    <p>Estudiante de <strong>Ingeniería en Software</strong> en la Universidad de Guayaquil (Ecuador), apasionado por la
+                        tecnología, con experiencia sólida en el ensamblaje y mantenimiento de hardware. Actualmente,
+                        me encuentro profundizando mis conocimientos en el desarrollo <strong>backend</strong>, 
+                        estructuras de datos y resolución de problemas algorítmicos.</p>
                 </div>
             </section>
 
@@ -119,20 +122,187 @@
                     <li><span>HTML5 & CSS3</span> <i class="fas fa-code"></i></li>
                     <li><span>Java - POO</span> <i class="fas fa-coffee"></i></li>
                     <li><span>Python</span> <i class="fab fa-python"></i></li>
-                    <li><span>SQL (MariaDB)</span> <i class="fas fa-database"></i></li>
                 </ul>
             </section>
 
-            <section class="card padding-lg reveal" id="contacto">
-                <h2 class="section-title">Contáctame</h2>
-                
-                <div class="contact-direct" style="text-align: center; padding: 20px 0;">
-                    <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                        ¿Tienes algún proyecto o consulta? Elige tu canal preferido:
-                    </p>
+            <section class="card reveal">
+                <h3><i class="fas fa-brain"></i> Aptitudes Profesionales</h3>
+                <ul class="skills-list">
+                    <li><span>Resolución de Problemas Algorítmicos</span></li>
+                    <li><span>Capacidad de Aprendizaje Autónomo</span></li>
+                    <li><span>Atención al Detalle</span></li>
+                    <li><span>Documentación y Organización</span></li>
+                </ul>
+            </section>
+        </main>
+    </div>
 
-                    <div class="buttons-wrapper">
-                    
+    <div class="container-proyecto">
+        <section class="card padding-lg reveal" id="proyectos">
+            <h2 class="section-title">Mis Proyectos</h2>
+
+            <div class="carousel-container">
+                
+                <button class="carousel-btn prev-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="carousel-slide-wrapper">
+                    <div class="carousel-slides" id="track">
+                        
+                        <div class="project-card">
+                            <div class="mini-slider">
+                                <img src="img/batalla_pich/Batalla_Pich_1_Proyect.png" alt="Vista 1" class="slide-img active">
+                                <img src="img/batalla_pich/Batalla_Pich_2_Proyect.png" alt="Vista 2" class="slide-img">
+                                <img src="img/batalla_pich/Batalla_Pich_3_Proyect.png" alt="Vista 3" class="slide-img">
+                                <img src="img/batalla_pich/Batalla_Pich_4_Proyect.png" alt="Vista 4" class="slide-img">
+                                <img src="img/batalla_pich/Batalla_Pich_5_Proyect.png" alt="Vista 5" class="slide-img">
+                                <img src="img/batalla_pich/Batalla_Pich_6_Proyect.png" alt="Vista 6" class="slide-img">
+                                <img src="img/batalla_pich/Batalla_Pich_7_Proyect.png" alt="Vista 7" class="slide-img">
+                            </div>
+                            <div class="project-info">
+                                <h3>La Batalla del Pichincha - Videojuego 2D</h3>
+                                <p>Plataformero 2D educativo inspirado en la <strong>Batalla del Pichincha</strong>. Supera circuitos
+                                    estratégicos recolectando banderas para avanzar de nivel y descubre el lore histórico
+                                    de la gesta de 1822 en cada transición. Diseñado para fomentar el conocimiento de
+                                    la historia nacional mediante mecánicas interactivas de rescate y exploración.</p>
+                                <div class="project-tags">
+                                    <span class="tag blue">GDevelop</span>
+                                    <span class="tag blue">Lógica</span>
+                                    <span class="tag blue">Pixel Art</span>
+                                    <span class="tag blue">Plataforma 2D</span>
+                                    <span class="tag blue">Narración</span>
+                                </div>
+                                <a href="https://gd.games/instant-builds/1ce0e1c1-3f8c-4d4b-a6a1-d0a46759c08f" 
+                                    class="btn-primary small-btn" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer">
+                                    Ver Demo
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="mini-slider">
+                                <video class="project-img" autoplay loop muted playsinline poster="img/poster-video.jpg">
+                                    <source src="img/Despacho_Proyect.mp4" type="video/mp4">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            
+                            <div class="project-info">
+                                <h3>Despacho</h3>
+                                <p>Sistema Integral de Gestión Académica (Java) Desarrollo de una aplicación de escritorio robusta orientada al dominio de
+                                    <strong>Estructuras de Datos Avanzadas y Programación Orientada a Objetos</strong>. El sistema permite la administración de entidades
+                                    (Clientes, Empleados, Productos) mediante la implementación manual de <strong>listas simples, dobles, pilas y colas</strong>, evitando
+                                    el uso de librerías externas para profundizar en la lógica de punteros y gestión de memoria. Incluye módulos de búsqueda
+                                    optimizada, algoritmos de ordenamiento recursivos y una interfaz gráfica desarrollada en <strong>Swing (JFrames)</strong> con un sistema
+                                    estricto de validación de datos para garantizar la integridad de la información.</p>
+                                <div class="project-tags">
+                                    <span class="tag green">Java SE</span>
+                                    <span class="tag green">Apache NetBeans</span>
+                                    <span class="tag green">Algoritmo</span>
+                                    <span class="tag green">Swing/GUI</span>
+                                    <span class="tag green">Recursividad</span>
+                                </div>
+                                <a href="https://github.com/CJ7rafa/Despacho/tree/main" 
+                                    class="btn-primary small-btn" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer">
+                                    Ver Codigo
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="mini-slider">
+                                <img src="img/CV_Pag.png" alt="Proyecto Despacho" class="slide-img active">
+                            </div>
+                            
+                            <div class="project-info">
+                                <h3>Portafolio Personal</h3>
+                                <p>Sitio web desarrollado desde cero con <strong>HTML5, CSS y JavaScript</strong> puro.
+                                    Incluye modo oscuro, animaciones al hacer scroll y formulario de contacto funcional.</p>
+                                <div class="project-tags">
+                                    <span class="tag blue">HTML5</span>
+                                    <span class="tag blue">CSS3</span>
+                                    <span class="tag blue">JavaScript</span>
+                                </div>
+                                <a href="https://github.com/CJ7rafa/mi-cv-web" 
+                                    class="btn-primary small-btn" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer">
+                                    Ver Codigo
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="mini-slider">
+                                <img src="img/Proximamente.jpg" alt="Proximamente" class="slide-img active">
+                            </div>
+                            
+                            <div class="project-info">
+                                <h3>Merge Cube</h3>
+                                <p>Proximamente.</p>
+                                <div class="project-tags">
+                                    <span class="tag blue">Proximamente</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="mini-slider">
+                                <img src="img/Proximamente.jpg" alt="Proximamente" class="slide-img active">
+                            </div>
+                            
+                            <div class="project-info">
+                                <h3>Moodle</h3>
+                                <p>Proximamente.</p>
+                                <div class="project-tags">
+                                    <span class="tag blue">Proximamente</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="mini-slider">
+                                <img src="img/Proximamente.jpg" alt="Proximamente" class="slide-img active">
+                            </div>
+                            
+                            <div class="project-info">
+                                <h3>Red Social</h3>
+                                <p>Proximamente.</p>
+                                <div class="project-tags">
+                                    <span class="tag blue">Proximamente</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-btn next-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="carousel-dots" id="dotsNav"></div>
+        </section>
+
+        
+    </div>
+
+    <div class="contacto">
+        <section class="card reveal" id="contacto">
+            <h2 class="section-title">Contáctame</h2>
+            
+            <div class="contact-direct" style="text-align: center; padding: 20px 0;">
+                <p class="no-justify" style="margin-bottom: 25px; font-size: 1.1rem;">
+                    ¿Tienes algún proyecto o consulta? Elige tu canal preferido:
+                </p>
+
+                <div class="buttons-wrapper">
+                
                     <a href="mailto:rafaelolver2006@gmail.com?subject=Contacto%20Portafolio" 
                     class="email-btn">
                         <i class="fas fa-envelope" style="margin-right: 8px;"></i> Enviar Correo
@@ -157,14 +327,51 @@
                     </a>
 
                 </div>
-                </div>
-            </section>
-        </main>
+            </div>
+        </section>
+
+        <section class="card reveal feedback-section">
+            <h3 style="color: var(--accent);"><i class="fas fa-rocket"></i> Ayúdame a Crecer</h3>
+            
+            <p style="margin-bottom: 20px;">
+                Valoro tu experiencia. Selecciona un tema para enviarme tu recomendación directa por <strong>WhatsApp</strong>:</p>
+
+            <div class="feedback-grid">
+                
+                <a href="https://wa.me/593961676395?text=Hola%20Rafael,%20te%20recomiendo%20aprender%20esta%20tecnolog%C3%ADa%20o%20framework:..." 
+                class="feedback-item" target="_blank">
+                    <i class="fas fa-code"></i>
+                    <span>Stack Tecnológico</span>
+                    <small>¿Qué lenguaje sigue?</small>
+                </a>
+
+                <a href="https://wa.me/593961676395?text=Hola%20Rafael,%20vi%20tu%20c%C3%B3digo%20y%20tengo%20una%20sugerencia%20sobre%20tus%20validaciones/arquitectura:" 
+                class="feedback-item" target="_blank">
+                    <i class="fas fa-vial"></i>
+                    <span>Calidad de Código</span>
+                    <small>Feedback de mis proyectos</small>
+                </a>
+
+                <a href="https://wa.me/593961676395?text=Hola%20Rafael,%20te%20sugiero%20obtener%20esta%20certificaci%C3%B3n%20para%20tu%20perfil:" 
+                class="feedback-item" target="_blank">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificaciones</span>
+                    <small>Inglés o Técnicas</small>
+                </a>
+
+                <a href="https://wa.me/593961676395?text=Hola%20Rafael,%20tengo%20un%20comentario%20general%20o%20propuesta:" 
+                class="feedback-item other" target="_blank">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>Otro Tema</span>
+                    <small>Propuestas o consejos</small>
+                </a>
+            </div>
+        </section>
     </div>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Rafael Alfonso Olvera Vera. Portafolio Personal.</p>
+            <p class="no-justify">&copy; 2026 Rafael Alfonso Olvera Vera. Portafolio Personal.</p>
         </div>
     </footer>
 
