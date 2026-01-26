@@ -51,58 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejecutar una vez al inicio para mostrar lo que ya se ve
     revealOnScroll();
 
-    // --- 4. CARRUSEL DE PROYECTOS ---
-    const track = document.getElementById('track');
-    const slides = Array.from(track.children);
-    const nextButton = document.getElementById('nextBtn');
-    const prevButton = document.getElementById('prevBtn');
-    const dotsNav = document.getElementById('dotsNav');
-
-    // Crear los puntitos (dots) automáticamente según la cantidad de slides
-    slides.forEach((_, index) => {
-        const dot = document.createElement('button');
-        dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
-        // Click en el punto
-        dot.addEventListener('click', () => {
-            currentSlide = index;
-            updateCarousel();
-        });
-        dotsNav.appendChild(dot);
-    });
-
-    const dots = Array.from(dotsNav.children);
-    let currentSlide = 0;
-
-    const updateCarousel = () => {
-        // Mover el carrusel
-        const amountToMove = -100 * currentSlide;
-        track.style.transform = `translateX(${amountToMove}%)`;
-
-        // Actualizar puntos
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[currentSlide].classList.add('active');
-    };
-
-    // Botón Siguiente
-    nextButton.addEventListener('click', () => {
-        if (currentSlide === slides.length - 1) {
-            currentSlide = 0; // Vuelve al inicio (Loop)
-        } else {
-            currentSlide++;
-        }
-        updateCarousel();
-    });
-
-    // Botón Anterior
-    prevButton.addEventListener('click', () => {
-        if (currentSlide === 0) {
-            currentSlide = slides.length - 1; // Va al final
-        } else {
-            currentSlide--;
-        }
-        updateCarousel();
-    });
+    
 
     // --- 5. MINI-SLIDER AUTOMÁTICO ---
     const miniSliders = document.querySelectorAll('.mini-slider');
@@ -125,5 +74,74 @@ document.addEventListener('DOMContentLoaded', () => {
                 images[index].classList.add('active');
             }, 4000); // Cambiado a 4000ms (4 seg) para que sea un poco más dinámico
         }
+    });
+
+    // --- LÓGICA COMPLETA DEL CARRUSEL (Botones + Puntos) ---
+
+    const track = document.getElementById('track');
+    const slides = Array.from(track.children);
+    const nextButton = document.getElementById('nextBtn');
+    const prevButton = document.getElementById('prevBtn');
+    const dotsNav = document.querySelector('.carousel-indicators');
+    const dots = Array.from(dotsNav.children);
+
+    // Ancho de cada tarjeta (incluyendo márgenes si los hay)
+    const slideWidth = slides[0].getBoundingClientRect().width;
+
+    // Acomodar las diapositivas una al lado de otra (si no usas Flexbox en CSS)
+    // slides.forEach((slide, index) => {
+    //    slide.style.left = slideWidth * index + 'px';
+    // });
+
+    // Variable para saber en qué slide estamos
+    let currentIndex = 0;
+
+    // Función Maestra: Mueve el carrusel y actualiza los puntos
+    const moveToSlide = (targetIndex) => {
+        // 1. Mover el carrusel usando transform (CSS)
+        const amountToMove = slideWidth * targetIndex;
+        track.style.transform = 'translateX(-' + amountToMove + 'px)';
+        
+        // 2. Actualizar la clase .active en los puntos
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[targetIndex].classList.add('active');
+
+        // 3. Actualizar el índice actual
+        currentIndex = targetIndex;
+    }
+
+    // --- EVENTOS DE LOS BOTONES (FLECHAS) ---
+
+    nextButton.addEventListener('click', () => {
+        // Si estamos en el último, volver al primero (Ciclo infinito opcional)
+        // O detenerse. Aquí haremos que se detenga en el último.
+        if (currentIndex < slides.length - 1) {
+            moveToSlide(currentIndex + 1);
+        } else {
+            // Opcional: Volver al principio
+            moveToSlide(0); 
+        }
+    });
+
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            moveToSlide(currentIndex - 1);
+        } else {
+            // Opcional: Ir al final
+            moveToSlide(slides.length - 1);
+        }
+    });
+
+    // --- EVENTOS DE LOS PUNTOS (INDICADORES) ---
+
+    dotsNav.addEventListener('click', e => {
+        // Qué punto fue clickeado
+        const targetDot = e.target.closest('button');
+
+        if (!targetDot) return; // Si no clickeaste un punto, salir
+
+        const targetIndex = dots.findIndex(dot => dot === targetDot);
+        
+        moveToSlide(targetIndex);
     });
 });

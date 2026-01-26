@@ -482,7 +482,8 @@ body.dark-mode .skills-list i {
 .email-btn, 
 .btn-whatsapp,
 .btn-linkedin,
-.btn-calendly {
+.btn-calendly,
+.btn-github {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -537,6 +538,17 @@ body.dark-mode .skills-list i {
 
 .btn-calendly:hover {
     background-color: #0050c2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* 4. Color GitHub (Negro) */
+.btn-github {
+    background-color: #000000;
+}
+
+.btn-github:hover {
+    background-color: #333333;
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
@@ -700,6 +712,43 @@ body.dark-mode .skills-list i {
 @media (max-width: 768px) {
     .prev-btn { left: -10px; }
     .next-btn { right: -10px; }
+}
+
+/* --- INDICADORES DE PROYECTO (Estilo Píldora) --- */
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center; /* Centrados horizontalmente */
+    align-items: center;
+    gap: 10px; /* Espacio entre puntos */
+    margin-top: 20px; /* Separación de las tarjetas */
+    position: relative;
+    z-index: 10;
+}
+
+/* El punto inactivo (círculo pequeño) */
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: #cbd5e1; /* Gris suave */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    
+    /* La magia: Animación suave de ancho y color */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* El punto activo (Píldora estirada) */
+.dot.active {
+    width: 35px; /* Se estira a lo ancho */
+    background-color: var(--accent, #0ea5e9); /* Tu color azul */
+    border-radius: 100px; /* Bordes muy redondos */
+}
+
+/* Efecto Hover */
+.dot:hover:not(.active) {
+    background-color: #94a3b8; /* Gris un poco más oscuro al pasar el mouse */
 }
 
 /* Puntos de navegación */
@@ -1021,3 +1070,47 @@ body.dark-mode .feedback-item:hover {
 
 }
 
+/* --- ESTILOS DE BARRAS DE PROGRESO (SKILLS) --- */
+
+.skill-item {
+    margin-bottom: 18px; /* Espacio entre cada habilidad */
+}
+
+.skill-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: var(--text-main);
+}
+
+.skill-percent {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* El fondo gris (el riel de la barra) */
+.progress-track {
+    width: 100%;
+    height: 12px; /* Grosor de la barra */
+    background-color: #e0e0e0; /* Gris claro de fondo */
+    border-radius: 20px; /* Bordes redondos (pill shape) */
+    overflow: hidden; /* Para que el relleno no se salga de las curvas */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Un toque de profundidad */
+}
+
+/* El relleno de color (el degradado) */
+.progress-fill {
+    height: 100%;
+    border-radius: 20px;
+    
+    /* EL DEGRADADO DE AZUL A ROJO */
+    background: linear-gradient(90deg, #0ea5e9 0%, #3b82f6 50%, #0f172a 100%);
+    
+    /* Animación para que cargue suavemente al entrar */
+    transition: width 1.5s ease-in-out;
+}
+
+/* Ajuste para Modo Oscuro (si lo usas) */
+body.dark-mode .progress-track {
+    background-color: #334155;
+}
