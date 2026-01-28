@@ -1,3 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+/* --- SUAVIZADO DEL MODO OSCURO --- */
+
+/* 1. Fondo general y texto base */
+body {
+    /* Se tardará medio segundo (0.5s) en cambiar los colores */
+    transition: background-color 1s ease, color 1s ease;
+}
+
+/* 2. Elementos específicos que tienen su propio fondo o bordes */
+.project-card, 
+.navbar, 
+header, 
+footer, 
+input, 
+textarea,
+button {
+    /* Añadimos border-color y box-shadow para que los bordes y sombras también cambien suave */
+    transition: background-color 1s ease, 
+                color 1s ease, 
+                border-color 1s ease, 
+                box-shadow 1s ease;
+}
+
+/* 3. Iconos (si cambian de color) */
+i, svg {
+    transition: color 1s ease, fill 1s ease;
+}
+
+html {
+    /* El tamaño estándar es 16px. 
+       Al poner 90%, bajamos a ~14.4px. 
+       Todo el texto y elementos definidos en 'rem' se ajustarán automáticamente. */
+    font-size: 90%; 
+    scroll-behavior: smooth; /* De paso, esto hace que el scroll sea suave */
+}
+
 :root {
   --primary: #0f172a;
   --accent: #0ea5e9;
@@ -12,6 +52,7 @@
   --error-text: #b91c1c;
   --loading-bg: #f0f9ff;
   --loading-text: #0369a1;
+  --tag-gray: rgba(100, 116, 139, 0.1);
 }
 
 /* --- FOTO DE PERFIL: CÍRCULO COMPLETO (TARJETA + FOTO) --- */
@@ -45,6 +86,23 @@
     border-radius: 50%;
 }
 
+/* --- ALINEACIÓN PERFECTA EN CONTACTO --- */
+
+/* 1. Hacemos que el contenedor del texto e icono use Flexbox */
+.card .item span {
+    display: flex;       
+    align-items: center; /* Esto alinea verticalmente el texto con el icono */
+}
+
+/* 2. Truco Maestro: Ancho fijo para los iconos */
+.card .item i {
+    width: 35px;        /* Obliga a todos los iconos a ocupar el mismo espacio */
+    text-align: center; /* Centra el dibujito dentro de ese espacio de 35px */
+    flex-shrink: 0;     /* Evita que el icono se aplaste si el texto es largo */
+    margin-right: 5px;  /* Un pequeño respiro extra antes del texto */
+    color: var(--accent);
+}
+
 p:not(.no-justify) {
     text-align: justify;
 }
@@ -55,17 +113,24 @@ p:not(.no-justify) {
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-  background-color: var(--bg);
-  color: var(--text-main);
-  line-height: 1.6;
+body { 
+    /* Reduce todo el sitio al 87.5% */
+    zoom: 0.87; 
+    
+    /* Asegura que el scroll se comporte bien */
+    overflow-x: hidden;
+
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    font-size: 1rem; /* Asegura que herede el nuevo tamaño base */
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+
 }
 
 /* Header */
@@ -146,12 +211,21 @@ body {
 
 .padding-lg {
   padding: 32px;
-  width: 80%;
 }
 
 .section-title {
   font-size: 1.5rem;
   font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--primary);
   margin-bottom: 20px;
   border-bottom: 2px solid var(--accent);
@@ -204,19 +278,79 @@ h3 i {
   border-radius: 99px;
 }
 
+/* --- PALETA DE COLORES PARA TAGS --- */
+
+/* 1. ROJO (Errores, Java, Angular, Bugs) */
+.tag.red {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* 2. NARANJA (Advertencias, HTML5, Bases de Datos) */
+.tag.orange {
+    background: #ffedd5;
+    color: #9a3412;
+    border: 1px solid #fed7aa;
+}
+
+/* 3. AMARILLO / AMBER (JavaScript, Python, Precaución) */
+.tag.yellow {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+/* 5. TEAL / ESMERALDA (Seguridad, Clean Code, Tailwind) */
+.tag.teal {
+    background: #ccfbf1;
+    color: #115e59;
+    border: 1px solid #99f6e4;
+}
+
+/* 7. ÍNDIGO (PHP, C#, Visual Studio) */
+.tag.indigo {
+    background: #e0e7ff;
+    color: #3730a3;
+    border: 1px solid #c7d2fe;
+}
+
+/* 8. VIOLETA / PURPLE (Bootstrap, Heroku, Diseño) */
+.tag.purple {
+    background: #f3e8ff;
+    color: #6b21a8;
+    border: 1px solid #e9d5ff;
+}
+
+/* 9. ROSA (Sass, GraphQL, UI/UX) */
+.tag.pink {
+    background: #fce7f3;
+    color: #9d174d;
+    border: 1px solid #fbcfe8;
+}
+
 .tag.blue {
   background: #e0f2fe;
   color: #0369a1;
+  border: 1px solid #bae6fd; /* Borde azul suave */
 }
 
 .tag.green {
   background: #dcfce7;
   color: #15803d;
+  border: 1px solid #bbf7d0; /* Borde verde suave */
 }
 
 .tag.sky {
   background: #e0f2fe;
   color: #0369a1;
+  border: 1px solid #bae6fd; /* Borde celeste suave */
+}
+
+.tag.gray {
+    background-color: var(--tag-gray); /* 10% de opacidad del gris */
+    color: #64748b; /* El color hexadecimal puro para el texto */
+    border: 1px solid rgba(100, 116, 139, 0.2); /* Opcional: un borde muy sutil */
 }
 
 /* Skills List */
@@ -292,7 +426,8 @@ h3 i {
 
 /* Button */
 
-.btn-primary {
+.btn-primary,
+.btn-jugar {
   background: var(--accent);
   color: white;
   border: none;
@@ -315,13 +450,34 @@ h3 i {
   transform: translateY(-1px);
 }
 
-.btn-primary:active {
+.btn-jugar:hover {
+  background: #02c70c;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active,
+.btn-jugar:active {
   transform: translateY(0);
 }
 
-.btn-primary:disabled {
+.btn-primary:disabled,
+.btn-jugar:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.buttons-wrapper {
+    display: flex;       /* Los pone en fila */
+    gap: 10px;           /* Espacio entre los dos botones */
+    margin-top: 20px;    /* Separación del texto de arriba */
+    flex-wrap: wrap;     /* Si la pantalla es muy pequeña, baja uno automáticamente */
+}
+
+/* Opcional: Si quieres que cada botón ocupe el 50% del espacio */
+
+.buttons-wrapper .btn-primary , .btn-jugar {
+    flex: 1;
+    text-align: center;
 }
 
 /* Status Box */
@@ -383,6 +539,8 @@ body.dark-mode {
   /* Texto secundario gris claro */
   --border: #374151;
   /* Bordes oscuros */
+  --tag-gray: white;
+  /* Etiquetas grises */
 }
 
 /* Ajustes específicos para Dark Mode */
@@ -621,24 +779,6 @@ body.dark-mode .skills-list i {
     opacity: 0.7;          /* Un pequeño efecto visual */
 }
 
-/* --- ESTILOS DEL CARRUSEL --- */
-
-.carousel-container {
-    position: relative;
-    width: 100%;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Riel que se mueve */
-.carousel-slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-}
-
 /* Imagen del proyecto */
 .project-img {
     width: 100%;
@@ -660,16 +800,6 @@ body.dark-mode .skills-list i {
     background-color: var(--card-bg); 
     
     border-bottom: 1px solid var(--border);
-}
-
-/* Texto del proyecto */
-.project-info {
-    padding: 20px;
-}
-
-.project-info h3 {
-    margin-bottom: 10px;
-    font-size: 1.3rem;
 }
 
 .project-tags {
@@ -780,7 +910,9 @@ body.dark-mode .carousel-btn {
 }
 body.dark-mode .carousel-btn:hover {
     background: var(--accent);
-}/* --- ESTILOS DEL CARRUSEL --- */
+}
+
+/* --- ESTILOS DEL CARRUSEL --- */
 
 .carousel-container {
     position: relative;
@@ -792,34 +924,53 @@ body.dark-mode .carousel-btn:hover {
 }
 
 /* Ventana que recorta lo que no se ve */
+/* 1. EL VISOR (La máscara) */
 .carousel-slide-wrapper {
-    overflow: hidden;
-    width: 100%;
+    /* Permitimos scroll horizontal pero ocultamos la barra visualmente */
+    overflow-x: auto; 
+    overflow-y: hidden;
     
-    /* --- CAMBIO CLAVE 1: Límite de ancho --- */
-    max-width: 80%; /* Evita que la tarjeta sea gigante */
-    margin: 0 auto;   /* Centra la tarjeta en el contenedor */
-    /* --------------------------------------- */
+    /* ESTA ES LA MAGIA: Eje X, alineación obligatoria */
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth !important; /* Suavidad nativa */
     
+    width: 80%;
+    margin: 0 auto;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    
+    /* Ocultar barra de scroll (Chrome/Safari/Opera) */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    /* Ocultar barra (Firefox/IE) */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-/* Riel que se mueve */
+/* 2. EL RIEL (Contenedor flexible) */
 .carousel-slides {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
+    width: fit-content; /* Deja que crezca lo que necesite */
+    gap: 0;
+    transition: transform 0.75s ease-in-out;
 }
 
-/* Cada tarjeta de proyecto */
+/* 3. LA TARJETA (El objetivo del imán) */
 .project-card {
-    min-width: 100%; /* Ocupa todo el ancho disponible */
+    /* Importante: Alineación del imán */
+    scroll-snap-align: center; 
+    scroll-snap-stop: always; /* Obliga a parar en cada una */
+    
+    /* Tamaño: 100% del ancho del VISOR */
+    flex: 0 0 100%; 
+    width: 100%;
+    
+    /* Estética */
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
-    text-align: left;
+    position: relative; /* Para que no se salga nada */
 }
 
 /* Texto del proyecto */
@@ -911,7 +1062,7 @@ body.dark-mode .carousel-btn:hover {
     justify-content: center; /* Centra horizontalmente (izquierda-derecha) */
     align-items: center;     /* Centra verticalmente (arriba-abajo) */
     flex-direction: column;  /* Asegura que los elementos se apilen uno sobre otro */
-    width: 100%;             /* Que ocupe todo el ancho disponible */
+    max-width: 1200px;
     margin: 0 auto;          /* Un refuerzo extra para centrar el bloque mismo */
     text-align: center;      /* Centra los textos internos por si acaso */
 }
@@ -964,9 +1115,8 @@ video.project-img {
 }
 
 .feedback-section {
-  margin: 30px;
-    border: 2px dashed var(--accent); /* Borde punteado para que parezca "en construcción/mejora" */
-    background: rgba(14, 165, 233, 0.03); /* Un fondo azul muy suave */
+  border: 2px dashed var(--accent); /* Borde punteado para que parezca "en construcción/mejora" */
+  background: rgba(14, 165, 233, 0.03); /* Un fondo azul muy suave */
 }
 
 body.dark-mode .feedback-section {
@@ -976,25 +1126,29 @@ body.dark-mode .feedback-section {
 /* --- GRID DE FEEDBACK (BOTONES MÁGICOS) --- */
 
 .feedback-grid {
-    display: grid;
-    /* Crea columnas automáticas de mínimo 200px */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    /* CAMBIO: Usamos Flexbox en lugar de Grid */
+    display: flex;
+    flex-wrap: wrap; /* Permite que bajen a la siguiente línea */
+    justify-content: center; /* ¡ESTA ES LA CLAVE! Centra todo horizontalmente */
     gap: 15px;
     margin-top: 20px;
 }
 
 .feedback-item {
+    /* Ajustamos el tamaño para que se comporten bien en Flexbox */
+    flex: 0 1 300px; /* No crecen (0), sí se encogen (1), base de 220px */
+    
+    /* Mantiene tus estilos visuales anteriores... */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    
     background: white;
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 20px;
-    text-decoration: none; /* Quita el subrayado del link */
+    text-decoration: none;
     color: var(--text-main);
     transition: all 0.3s ease;
     cursor: pointer;
@@ -1032,15 +1186,8 @@ body.dark-mode .feedback-section {
 
 .feedback-item:hover i {
     transform: scale(1.1); /* El icono crece */
-}
-
-/* Estilo especial para el botón "Otro" (Opcional) */
-.feedback-item.other:hover {
-    background: #f0fdf4; /* Verde muy clarito */
-    border-color: #25D366; /* Color WhatsApp */
-}
-.feedback-item.other:hover i {
     color: #25D366;
+    
 }
 
 /* Ajuste para Modo Oscuro */
@@ -1065,7 +1212,7 @@ body.dark-mode .feedback-item:hover {
     margin-bottom: 40px;
     
     /* Tip Pro: Evita que se vea gigante en pantallas ultra anchas */
-    max-width: 1000px; 
+    max-width: 1200px; 
     display: block; /* Asegura que se comporte como bloque */
 
 }
@@ -1098,19 +1245,459 @@ body.dark-mode .feedback-item:hover {
     box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Un toque de profundidad */
 }
 
-/* El relleno de color (el degradado) */
+/* --- CLASE BASE (Estructura y Animación) --- */
 .progress-fill {
     height: 100%;
     border-radius: 20px;
-    
-    /* EL DEGRADADO DE AZUL A ROJO */
-    background: linear-gradient(90deg, #0ea5e9 0%, #3b82f6 50%, #0f172a 100%);
-    
-    /* Animación para que cargue suavemente al entrar */
+    width: 0; /* Empieza en 0 para la animación */
     transition: width 1.5s ease-in-out;
+    /* Sombra sutil para darle relieve */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2); 
+}
+
+/* --- 1. JAVA (Naranja a Rojo Oficial) --- */
+.progress-fill-java {
+    /* Degradado de Naranja claro a Rojo Java intenso */
+    background: linear-gradient(90deg, 
+        #fcae6d 0%,   /* Naranja pastel */
+        #f89820 25%,  /* Naranja Java */
+        #f05e16 50%,  /* Transición */
+        #e3360f 75%,  /* Rojo anaranjado */
+        #d1180b 100%  /* Rojo oscuro */
+    );
+    box-shadow: 0 0 10px rgba(248, 152, 32, 0.4); /* Glow Naranja */
+}
+
+/* --- 2. HTML5 & CSS3 (Naranja HTML a Azul CSS) --- */
+/* Esta es especial: Mezcla las dos tecnologías */
+.progress-fill-html {
+    background: linear-gradient(90deg, 
+        #e44d26 0%,   /* Naranja HTML5 */
+        #f16529 25%,  /* Naranja más claro */
+        #a67c52 50%,  /* Punto medio neutro */
+        #33a9dc 75%,  /* Azul claro CSS */
+        #1572b6 100%  /* Azul CSS3 oficial */
+    );
+    box-shadow: 0 0 10px rgba(228, 77, 38, 0.4);
+}
+
+/* --- 3. PHP (Escala de Púrpuras/Elefante) --- */
+.progress-fill-php {
+    background: linear-gradient(90deg, 
+        #aebcb8 0%,   /* Gris azulado claro */
+        #8c9eb5 25%,  /* Azul PHP claro */
+        #777bb4 50%,  /* Púrpura PHP base */
+        #6367a5 75%,  /* Púrpura oscuro */
+        #4f5b93 100%  /* Azul oscuro profundo */
+    );
+    box-shadow: 0 0 10px rgba(119, 123, 180, 0.4);
+}
+
+/* --- 4. PYTHON (Azul a Amarillo Oficial) --- */
+.progress-fill-python {
+    background: linear-gradient(90deg, 
+        #387eb8 0%,   /* Azul Python */
+        #4b8bbe 25%,  /* Azul suave */
+        #64a2d3 50%,  /* Azul hielo */
+        #ffe873 75%,  /* Amarillo Python claro */
+        #ffd43b 100%  /* Amarillo Python fuerte */
+    );
+    box-shadow: 0 0 10px rgba(56, 126, 184, 0.4);
+}
+
+/* --- 5. JAVASCRIPT (Amarillo Eléctrico) --- */
+.progress-fill-js {
+    background: linear-gradient(90deg, 
+        #fff5a3 0%,   /* Amarillo pálido */
+        #faeb5a 25%,  /* Amarillo limón */
+        #f7df1e 50%,  /* Amarillo JS Oficial */
+        #dcb315 75%,  /* Oro */
+        #b8930c 100%  /* Ocre oscuro (para contraste) */
+    );
+    /* Texto en negro o sombra oscura recomendada para JS */
+    box-shadow: 0 0 10px rgba(247, 223, 30, 0.4);
+}
+
+/* --- 6. INTELIGENCIA ARTIFICIAL (Cian a Violeta Futurista) --- */
+.progress-fill-ai {
+    background: linear-gradient(90deg, 
+        #22d3ee 0%,   /* Cian Neón */
+        #3b82f6 25%,  /* Azul Real */
+        #6366f1 50%,  /* Índigo */
+        #8b5cf6 75%,  /* Violeta */
+        #d946ef 100%  /* Fucsia */
+    );
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }
 
 /* Ajuste para Modo Oscuro (si lo usas) */
 body.dark-mode .progress-track {
     background-color: #334155;
+}
+
+/* --- EFECTO DE ELEVACIÓN 3D (HOVER) --- */
+
+/* 1. Estado Base: Preparamos la animación */
+.project-card, 
+.feedback-item, 
+.tool-item,
+.card .item { /* Esto es para los items de contacto (teléfono, mail) */
+    /* "all" anima cualquier cambio, 0.3s es la velocidad estándar suave */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Aseguramos que tengan una sombra base pequeña o nula */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+}
+
+/* 2. Estado Hover: Cuando el mouse pasa por encima */
+.project-card:hover, 
+.feedback-item:hover,
+.tool-item:hover,
+.card .item:hover {
+    /* Mueve la tarjeta 10 píxeles hacia arriba */
+    transform: translateY(-10px); 
+    
+    /* La sombra crece hacia abajo y se vuelve más borrosa (efecto 3D) */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    
+    /* Opcional: Un borde sutil de color para resaltar más (Tu azul) */
+    /* border-color: var(--accent); */
+    
+    /* Cambia el cursor para indicar clic */
+    cursor: pointer;
+}
+
+/* --- EFECTO LEVITACIÓN PARA LAS TARJETAS PRINCIPALES --- */
+
+.card,
+.cardfoto {
+    /* 1. Suavizamos el movimiento */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Aseguramos que tenga una sombra base inicial (si no la tenía ya) */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover,
+.cardfoto:hover {
+    /* 2. Se eleva 5 píxeles (sutil y elegante) */
+    transform: translateY(-5px);
+    
+    /* 3. La sombra crece y se difumina hacia abajo */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    
+    /* Opcional: Si quieres que el borde brille un poquito en tu azul */
+    /* border: 1px solid rgba(59, 130, 246, 0.3); */
+}
+
+/* --- BARRA SUPERIOR FIJA (STICKY HEADER) --- */
+
+.sticky-navbar {
+    position: sticky; /* La magia: se pega al llegar arriba */
+    top: 0;           /* Se queda en el pixel 0 (techo) */
+    z-index: 1000;    /* Se asegura de estar ENCIMA de todo lo demás */
+    
+    /* Efecto Vidrio (Glassmorphism) */
+    background-color: rgba(255, 255, 255, 0.85); /* Blanco al 85% */
+    backdrop-filter: blur(10px); /* Desenfoca lo que pasa por detrás */
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Línea sutil abajo */
+    
+    padding: 13px 0;
+    width: 100%;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between; /* Empuja los elementos a los extremos opuestos */
+    align-items: center;
+    
+    /* CAMBIO CLAVE 1: Ancho total */
+    width: 100%;       /* Ocupa toda la pantalla */
+    max-width: none;   /* Elimina la "caja invisible" del medio */
+    
+    /* CAMBIO CLAVE 2: Márgenes de seguridad */
+    padding: 0 20px;   /* Deja un poco de aire a los lados para que no se pegue feo */
+    margin: 0;         /* Quita el auto-centrado */
+}
+
+/* Estilo de tu Nombre */
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main, #333);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+/* Enlaces del menú */
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--text-muted, #666);
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: var(--accent, #3b82f6); /* Tu color azul al pasar el mouse */
+}
+
+/* Botón de Contacto en el menú (Opcional) */
+.btn-nav {
+    background-color: var(--accent, #3b82f6);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: transform 0.2s;
+}
+
+.btn-nav:hover {
+    transform: scale(1.05);
+}
+
+/* MODO OSCURO (Si lo usas) */
+body.dark-mode .sticky-navbar {
+    background-color: rgba(30, 41, 59, 0.85); /* Fondo oscuro transparente */
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --- BOTÓN DESPLEGABLE MEJORADO --- */
+
+/* 1. Alineación a la derecha */
+.nav-dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* 2. Diseño "Premium" del Botón */
+.btn-dropdown {
+    /* Fondo con degradado para que se vea más moderno */
+    background: linear-gradient(135deg, var(--accent, #3b82f6) 0%, #1d4ed8 100%);
+    color: white;
+    
+    /* Espaciado y forma */
+    padding: 12px 40px 12px 25px; /* Más espacio para la flecha */
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil brillante */
+    
+    /* Tipografía */
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    
+    /* Sombra suave (Glow) */
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    
+    /* Limpieza técnica */
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.btn-dropdown:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5); /* Sombra más fuerte */
+    filter: brightness(1.1); /* Brilla un poco más */
+}
+
+/* La flechita */
+.dropdown-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.9);
+    pointer-events: none;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+/* Animación de la flecha al hacer hover en el botón */
+.nav-dropdown-wrapper:hover .dropdown-icon {
+    transform: translateY(-50%) rotate(180deg); /* Gira la flecha */
+}
+
+/* 3. DISEÑO DEL MENÚ DESPLEGABLE (Opciones) */
+/* Nota: Los navegadores limitan mucho el estilo de las <option>, 
+   pero podemos cambiar colores y fondo */
+.btn-dropdown option {
+    background-color: #1e293b; /* Fondo oscuro (tipo Dark Mode) */
+    color: white;              /* Texto blanco */
+    padding: 10px;             /* Espacio interno (funciona en algunos navegadores) */
+    font-size: 1rem;
+}
+
+/* Estilo para los Títulos de los Grupos (Aliados / Colaboradores) */
+.btn-dropdown optgroup {
+    font-style: normal;
+    font-weight: 800;       /* Título bien negrita */
+    color: #94a3b8;         /* Color gris para el título (distinto al blanco de los nombres) */
+    background-color: #1e293b; /* Fondo oscuro */
+    margin: 5px 0;          /* Separa un poco los grupos */
+}
+
+/* Estilo para las opciones normales (Los nombres) */
+.btn-dropdown option {
+    color: white;           /* Nombres en blanco */
+    padding-left: 10px;     /* Un poco de sangría */
+    font-weight: normal;
+}
+
+/* --- DISEÑO DE CONTACTO DIVIDIDO --- */
+
+.contact-split-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Izquierda normal, Derecha un poco más ancha */
+    gap: 40px; /* Espacio entre las dos columnas */
+    align-items: start; /* Alineados arriba */
+    padding: 20px 0;
+}
+
+/* Columna de Botones (Izquierda) */
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Hacemos que los botones sean bloques completos para que se vean ordenados */
+.buttons-wrapper-vertical {
+    display: flex;
+    flex-direction: column; /* Uno debajo del otro */
+    gap: 15px; /* Espacio entre botones */
+}
+
+/* Estilo unificado para los botones de contacto */
+.btn-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Texto centrado */
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+    transition: transform 0.2s, opacity 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    height: 62px;
+}
+
+.btn-contact i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.btn-contact:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+/* COLORES ESPECÍFICOS (Recuperados de tu código anterior) */
+.email-btn { background-color: #ea4335; }
+.btn-whatsapp { background-color: #25D366; }
+.btn-linkedin { background-color: #0077b5; }
+.btn-calendly { background-color: #3b82f6; } /* Azul */
+.btn-github { background-color: #333; }
+
+/* Columna del Formulario (Derecha) */
+.contact-right {
+    background-color: rgba(255, 255, 255, 0.03); /* Un fondo sutil para diferenciar */
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* --- DISEÑO DE APTITUDES DIVIDIDO --- */
+
+.aptitudes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas del mismo tamaño */
+    gap: 30px; /* Espacio entre la izquierda y la derecha */
+    align-items: start; /* Que empiecen alineados desde arriba */
+}
+
+/* Estilo para los subtítulos (Opcional, para que resalten) */
+.skill-category {
+    color: var(--accent); /* Tu color azul */
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+/* --- RESPONSIVE (CELULARES) --- */
+/* Cuando la pantalla sea pequeña, vuelve a una sola columna */
+@media (max-width: 768px) {
+    .aptitudes-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    /* 1. VISOR: Forzamos una altura MÍNIMA grande */
+    .carousel-slide-wrapper {
+        width: 100% !important;
+        margin: 0 !important;
+        /* AQUÍ ESTÁ EL TRUCO: */
+        /* Dale suficiente altura para que quepa la imagen + texto largo */
+        min-height: 650px !important; 
+        height: auto !important;
+        
+        /* Aseguramos scroll horizontal */
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+    }
+
+    /* 2. TARJETA: Que ocupe toda esa altura */
+    .project-card {
+        min-height: 650px !important; /* Misma altura que el visor */
+        height: auto !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Todo empieza desde arriba */
+    }
+
+    /* 3. IMAGEN: Controlamos que no sea gigante */
+    .mini-slider {
+        height: 200px !important; /* Altura fija para la imagen */
+        flex-shrink: 0;
+    }
+
+    /* 4. TEXTO: Que tenga espacio */
+    .project-info {
+        padding-bottom: 60px !important; /* Espacio extra abajo para que no toque el borde */
+    }
+
+    /* 5. BOTONES DE FLECHA (Flotantes) */
+    .carousel-container {
+        position: relative;
+        display: block !important;
+    }
+    .carousel-btn {
+        position: absolute !important;
+        top: 100px; /* Alineados con la imagen (aprox mitad de 200px) */
+        z-index: 20;
+        background: rgba(0,0,0,0.5);
+        color: white;
+        width: 35px; height: 35px;
+        border-radius: 50%;
+        border: none;
+    }
+    .prev-btn { left: 10px !important; }
+    .next-btn { right: 10px !important; }
+    
+    /* 6. PUNTOS (Dots) */
+    .carousel-indicators {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        z-index: 20;
+    }
 }
