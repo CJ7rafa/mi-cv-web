@@ -1,0 +1,219 @@
+/* media.css - Estilos Responsivos */
+
+/* =========================================
+   MÓVILES Y TABLETS (Hasta 768px)
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+    /* FIX 1: Evitar el bug del 45% de espacio en blanco. */
+    html,
+    body {
+        overflow-x: clip;
+        /* clip preserva position: sticky a diferencia de hidden */
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    body {
+        /* FIX 2: El zoom: 0.87 del body hace que el body quede al 87% del ancho del HTML en móviles */
+        zoom: 1;
+    }
+
+    /* Ocultar iconos sociales del header en móviles (ahora están en el menú lateral) */
+    .social-links-nav {
+        display: none !important;
+    }
+
+    .main-layout {
+        margin: 0px;
+        gap: 50px;
+    }
+
+    .skill-category-title {
+        margin: 40px 0 15px 0;
+    }
+
+    /* Convertir layouts de dos columnas a una sola columna (apilada) */
+    .layout-row-split,
+    .layout-row-split-even {
+        grid-template-columns: 1fr;
+    }
+
+    /* Solución al desbordamiento a la derecha/izquierda del canvas */
+    .layout-col {
+        min-width: 0;
+    }
+
+    .div-inline-136 {
+        width: 100% !important;
+        justify-content: center !important; /* Si el canvas cabe, se centra. Pero le diremos al canvas que sea max 100% */
+    }
+
+    /* Asegurar que el gráfico de telaraña se reduzca en pantallas muy pequeñas */
+    canvas#aptitudesChart {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .project-card-inline-40 {
+        padding: 10px;
+    }
+
+    .padding-lg {
+        padding: 0px;
+    }
+
+    .featured-buttons-inline-51 {
+        display: block;
+    }
+
+    .section-title-inline-39 {
+        margin: 30px auto;
+    }
+
+    /* Mostrar proyectos secundarios en una sola columna */
+    .proyectos-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Apilar los botones de paginación de proyectos (Menos arriba, Más abajo) */
+    #proyectos-pagination {
+        flex-direction: column;
+        margin: 20px 0 0 0 !important;
+        border-radius: 0 0 20px 20px;
+        width: 100%;
+    }
+
+    #btn-ver-menos {
+        border-right: none !important;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .section-title-inline-54 {
+        margin: 30px auto;
+    }
+
+    .btn-ver-menos-inline-77 {
+        width: 100%;
+    }
+
+    /* Reducir los íconos de habilidades un 30% en celulares */
+    .skill-pill img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .skill-pill i {
+        font-size: 1.9rem !important;
+    }
+
+    .container-proyecto {
+        gap: 50px;
+    }
+
+    .proyectos-grid-inline-55 {
+        gap: 50px;
+    }
+
+    /* =========================================
+       REDISEÑO EXPERIENCIA (WRAP CUADRADO EN MÓVIL)
+       ========================================= */
+    .experiencia-item {
+        display: block !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* 1. Imagen Flotante a la izquierda (Wrap tipo Cuadrado de Word) */
+    .experiencia-item>div:first-child {
+        float: left;
+        margin: 0 15px 5px 0;
+    }
+
+    /* Aumentar tamaño a 60px */
+    .experiencia-item>div:first-child img {
+        width: 60px !important;
+        height: 60px !important;
+        object-fit: cover;
+    }
+
+    /* 2. Romper el flexbox para permitir que el texto rodee la imagen */
+    .experiencia-item .flex-between {
+        display: block !important;
+        margin-bottom: 10px;
+    }
+
+    /* Extraer textos de sus divs internos para controlarlos directamente */
+    .experiencia-item .flex-between>div {
+        display: contents !important;
+    }
+
+    /* Nombre de la compañía */
+    .experiencia-item .flex-between p.bold {
+        display: block;
+        /* Fuerza salto de línea para lo que sigue */
+        font-size: 1.15rem;
+        margin: 0 0 4px 0 !important;
+        padding-top: 2px;
+        /* Alineación ligera con el borde superior de la img */
+    }
+
+    /* Fila 2: Cargo (Role) */
+    .experiencia-item .flex-between p.muted {
+        display: inline-block;
+        margin: 0 10px 5px 0 !important;
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    /* Fila 2: Lugar y Fecha */
+    .experiencia-item .flex-between span.muted {
+        display: inline-block;
+        font-size: 0.85rem;
+        margin-right: 10px;
+    }
+
+    /* Fila 3: Puntos explicativos (Rodean la imagen si es necesario) */
+    .experiencia-item p.con-punto {
+        margin-left: 0 !important;
+        display: block;
+        /* Fluyen naturalmente rodeando el float */
+    }
+
+    /* =========================================
+       CONTACTOS (UNICA COLUMNA)
+       ========================================= */
+    #contacto .buttons-wrapper {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
+    }
+
+    #contacto .btn-contact {
+        width: 100% !important;
+        height: auto !important;
+        padding: 15px !important;
+        /* Botones más amigables para tocar en pantallas táctiles */
+    }
+
+    #contacto .contact-divider {
+        display: none !important;
+    }
+
+    #contacto {
+        padding: 30px;
+    }
+
+    .hero-text-inline-5 {
+        padding: 50px 0 100px 0;
+    }
+
+    /* Mostrar las redes sociales del panel solo en celulares */
+    .panel-social-links {
+        display: flex !important;
+    }
+}
