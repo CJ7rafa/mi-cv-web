@@ -1,570 +1,788 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Rafael Olvera</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
 </head>
+
 <body>
     <header class="sticky-navbar">
         <div class="nav-content">
-            
-            <h1 class="nav-logo">Rafael Alfonso Olvera Vera</h1>
 
-            <div class="nav-dropdown-wrapper">
-                
-                <i class="fas fa-chevron-down dropdown-icon"></i>
-                
-                <select class="btn-dropdown" onchange="if(this.value) { window.open(this.value, '_blank'); this.value=''; }">
-                    
-                    <option value="" selected disabled>Aliados Estratégicos</option>
-                    
-                    <optgroup label="Aliados">
-                        <option value="https://adrianlous.netlify.app/">Adrían Loureiro</option>
-                        <option value="https://luminous-piroshki-0e7ffc.netlify.app/">Alfonso Alvarado</option>
-                        <option value="https://cvallanrodriguez.netlify.app/">Allan Rodriguez</option>
-                        <option value="https://cv-angel-luna.netlify.app/">Angel Luna</option>
-                        <option value="https://justin-farias.netlify.app/">Justin Farias</option>
-                    </optgroup>
+            <h1 class="nav-logo">Rafael Olvera</h1>
 
-                    <optgroup label="Colaboradores">
-                        <option value="https://portafolio-jonathan-cortez.netlify.app/">Jonothan Cortez</option>
-                    </optgroup>
+            <div class="social-links-nav">
+                <a href="https://www.linkedin.com/in/rafael-olvera-vera-682b35306" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/CJ7rafa" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:rafaelolver2006@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
 
-                </select>
+            <div class="nav-actions">
+                <button id="menu-toggle" class="menu-btn" aria-label="Abrir menú">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
-    <header class="hero reveal">
-        <div class="container">
-            <a href="docs/CV_Olvera_Vera_Rafael.pdf" 
-                download="CV_Olvera_Vera_Rafael.pdf" 
-                class="cv-header-btn" 
-                aria-label="Descargar CV"
-                title="Descargar CV">
-                Descargar CV <i class="fas fa-arrow-down"></i>
-            </a>
 
-            <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">
-                <i class="fas fa-moon"></i>
+    <!-- Panel lateral (Menú) -->
+    <div id="panel-overlay" class="panel-overlay"></div>
+    <aside id="side-panel" class="side-panel">
+        <div class="panel-header">
+            <h2>Menú</h2>
+            <button id="close-panel" class="close-btn" aria-label="Cerrar menú">
+                <i class="fas fa-times"></i>
             </button>
-            
-            <h1>Rafael Alfonso Olvera Vera</h1>
-            <p class="subtitle no-justify">Programador / Estudiante Universitario / Entusiasta de Hardware</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/rafael-olvera-vera-682b35306" target="_blank"><i class="fab fa-linkedin"></i> <span>LinkedIn</span></a>
-                <a href="https://github.com/CJ7rafa" target="_blank"><i class="fab fa-github"></i> <span>GitHub</span></a>
-                <a href="mailto:rafaelolver2006@gmail.com"><i class="fas fa-envelope"></i> <span>Email</span></a>
+        </div>
+        <div class="panel-content">
+            <nav class="panel-nav">
+                <a href="#sobre-mi" class="panel-link" data-i18n="nav_sobre_mi">Sobre Mí</a>
+                <a href="#habilidades" class="panel-link" data-i18n="nav_habilidades">Habilidades</a>
+                <a href="#proyecto-destacado" class="panel-link" data-i18n="nav_proyecto_destacado">Proyecto
+                    Destacado</a>
+                <a href="#proyectos-secundarios" class="panel-link" data-i18n="nav_proyectos">Proyectos</a>
+                <a href="#experiencia" class="panel-link" data-i18n="nav_experiencia">Experiencia</a>
+                <a href="#educacion" class="panel-link" data-i18n="nav_educacion">Educación</a>
+                <a href="#contacto" class="panel-link" data-i18n="nav_contacto">Contacto</a>
+            </nav>
+            <hr class="panel-divider">
+            <div class="panel-actions">
+                <a href="docs/CV-Rafael-Olvera.pdf" download="CV-Rafael-Olvera.pdf" class="cv-panel-btn"
+                    data-i18n="nav_descargar_cv">
+                    Descargar CV <i class="fas fa-arrow-down"></i>
+                </a>
+                <div id="theme-toggle" class="panel-link"
+                    style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); margin-top: 20px;">
+                    <span data-i18n="nav_modo_oscuro">Modo Oscuro</span>
+                    <i class="fas fa-moon" style="color: var(--text-main);"></i>
+                </div>
+                <!-- Contenedor Custom Dropdown Idioma -->
+                <div class="panel-link" id="lang-custom-container"
+                    style="padding: 0; display: flex; flex-direction: column; position: relative;">
+                    <!-- Botón -->
+                    <div id="lang-custom-btn"
+                        style="flex-grow: 1; display: flex; align-items: center; justify-content: space-between; padding: 15px 25px; cursor: pointer;">
+                        <i class="fa-solid fa-globe" style="color: var(--text-main);"></i>
+                        <span id="lang-selected-text" style="flex-grow: 1; padding: 0 10px;">Español (es)</span>
+                        <i class="fas fa-caret-down" id="lang-caret"
+                            style="color: var(--text-main); transition: transform 0.3s;"></i>
+                    </div>
+
+                    <!-- Menú Desplegable -->
+                    <div id="lang-custom-menu" class="custom-dropdown-menu">
+                        <div class="custom-lang-option" data-value="es">Español (es)</div>
+                        <div class="custom-lang-option" data-value="en">English (en)</div>
+                    </div>
+                </div>
+
+                <!-- Select Nativo Oculto (Para diccionario JS) -->
+                <select id="lang-selector" style="display: none;">
+                    <option value="es">Español (es)</option>
+                    <option value="en">English (en)</option>
+                </select>
+                
+                <!-- Redes sociales en el panel lateral (solo para móviles) -->
+                <div class="panel-social-links">
+                    <a href="https://www.linkedin.com/in/rafael-olvera-vera-682b35306" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/CJ7rafa" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:rafaelolver2006@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
         </div>
-    </header>
+    </aside>
+
+    <!-- Fondo Hero -->
+    <div class="div-inline-1">
+        <div class="div-inline-2">
+            <img src="img/fondo-blanco.avif" alt="Fondo Hero Claro" class="hero-bg hero-bg-light hero-bg-inline-3">
+            <img src="img/fondo-negro.avif" alt="Fondo Hero Oscuro" class="hero-bg hero-bg-dark hero-bg-inline-4">
+        </div>
+    </div>
 
     <div class="container main-layout">
-        <aside class="sidebar">
-            <section class="cardfoto reveal profile-container">
-                <img src="img/CV_Rafael.png" alt="Foto de Rafael Olvera">
-            </section>
 
-            <section class="card reveal">
-                <h3><i class="fas fa-address-card"></i> Contacto</h3>
-                <div class="item flex-between"> <a href="tel:+593961676395" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><span><i class="fas fa-phone-alt"></i>+593-96-167-6395</span></a></div>
-                <div class="item flex-between"> <a href="mailto:rafaelolver2006@gmail.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">  <span><i class="fas fa-envelope"></i> rafaelolver2006@gmail.com</span> </a></div>
-                <div class="item flex-between"> <a href="https://maps.google.com/?q=Guayaquil,+Ecuador" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;"><span><i class="fas fa-map-marker-alt"></i>  Guayaquil, Ecuador </span> </a></div>
+        <!-- Hero Section (Introducción) -->
+        <section class="hero-text reveal hero-text-inline-5">
+            <p class="p-inline-6" data-i18n="hero_greeting">Hola, mi
+                nombre es</p>
+            <h1 class="h1-inline-7" data-i18n="hero_name">
+                Rafael Olvera.
+            </h1>
+            <h2 class="h2-inline-8" data-i18n="hero_subtitle">
+                Construyo cosas para web.
+            </h2>
+            <p class="p-inline-9" data-i18n="hero_desc">
+                Estudiante de Ingeniería en Software con un fuerte enfoque en el desarrollo backend y el aseguramiento
+                de calidad. Combino una gran atención al detalle con la capacidad de resolver problemas complejos,
+                buscando aportar valor mediante soluciones precisas y eficientes.
+            </p>
+            <div class="div-inline-10">
+                <a href="#proyecto-destacado" id="btn-ver-proyectos" class="btn-primary btn-ver-proyectos-inline-11"
+                    data-i18n="hero_btn">Ver
+                    mis proyectos</a>
+            </div>
+        </section>
 
-            </section>
+        <!-- Fila 1: Perfil y Sobre Mi -->
+        <div class="layout-row-split">
+            <div class="layout-col">
+                <section class="reveal profile-container">
+                    <img src="img/CV_Rafael.png" alt="Foto de Rafael Olvera">
+                </section>
+            </div>
+            <div class="layout-col">
+                <section class="card reveal" id="sobre-mi">
+                    <h2 class="section-title" data-i18n="sobre_mi_title">Sobre Mí</h2>
+                    <div class="bio">
+                        <p class="p-inline-12" data-i18n="sobre_mi_location">
+                            <i class="fas fa-map-marker-alt"></i> Guayaquil, Ecuador
+                        </p>
+                        <p class="p-inline-13" data-i18n="sobre_mi_p1">Mi pasión por la tecnología comenzó con el
+                            interés en la creación de
+                            videojuegos y rápidamente se expandió hacia una curiosidad por comprender cómo funciona todo
+                            el ecosistema tecnológico, desde la electrónica y el hardware hasta la lógica pura del
+                            software.</p>
+                        <p class="p-inline-14" data-i18n="sobre_mi_p2">He decidido enfocar mi carrera en el desarrollo
+                            backend, especializándome
+                            en el manejo avanzado de bases de datos, lenguaje Java y el intercambio eficiente de
+                            información. Me considero una persona meticulosa y detallista; si identifico algo que se
+                            puede mejorar, analizo el problema hasta encontrar la solución más óptima posible.</p>
+                        <p data-i18n="sobre_mi_p3">Actualmente busco integrarme al ámbito profesional, ya sea en roles
+                            de desarrollo backend,
+                            control de calidad (testing de validación o rendimiento) o mediante una pasantía. Mi
+                            objetivo es aportar mi capacidad analítica a un entorno laboral dinámico, sin dejar de lado
+                            mi formación continua en software y, a futuro, en ingeniería eléctrica.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- Fila 2: Habilidades -->
+        <section class="card reveal" id="habilidades">
+            <h3 data-i18n="hab_title"><i class="fas fa-tools"></i> Habilidades Técnicas & Entornos</h3>
 
-            <section class="card reveal">
-                <h3><i class="fas fa-graduation-cap"></i> Educación</h3>
-                <div class="item">
-                    <p class="bold">Bachiller Contable</p>
-                    <p class="muted">Unidad Educativa Fiscal Veintiocho de Mayo</p>
+            <div class="div-inline-15">
+                <h4 class="skill-category-title skill-category-title-inline-16" data-i18n="hab_backend">Backend</h4>
+                <div class="skills-grid">
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"
+                            class="img-inline-17"> PHP</span>
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"
+                            class="img-inline-18"> Java</span>
                 </div>
 
-                <div class="item">
-                    <p class="bold">Ing. en Software</p>
-                    <p class="muted">Universidad de Guayaquil</p>
-                    <p class="tag blue">2024 - Presente</p>
+                <h4 class="skill-category-title" data-i18n="hab_data">Gestión de Datos</h4>
+                <div class="skills-grid">
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                            alt="MySQL" class="img-inline-19"> MySQL</span>
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                            alt="PostgreSQL" class="img-inline-20">
+                        PostgreSQL</span>
+                    <span class="skill-pill"><i class="fas fa-server fas-inline-21"></i>
+                        SQL</span>
+                    <span class="skill-pill"><i class="fas fa-database fas-inline-22"></i>
+                        phpMyAdmin</span>
+                    <span class="skill-pill"><i class="fas fa-database fas-inline-23"></i>
+                        pgAdmin</span>
                 </div>
 
-                <div class="item">
-                    <p class="bold">Fundación Carlos Slim</p>
-                    <p class="muted no-justify">Curso de Programador de Microcontroladores</p>
-                    <a href="https://capacitateparaelempleo.org/verifica/7692d437-995d-44d9-864c-e28dfc9f22fc/d7d4afbc-1455-47c5-83d5-9937ba13ab94" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                        <p class="tag blue"><span>Certificado</span></p>
+                <h4 class="skill-category-title" data-i18n="hab_frontend">Frontend</h4>
+                <div class="skills-grid">
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                            alt="JavaScript" class="img-inline-24">
+                        JavaScript</span>
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                            alt="HTML5" class="img-inline-25"> HTML5</span>
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"
+                            class="img-inline-26"> CSS3</span>
+                </div>
+
+                <h4 class="skill-category-title" data-i18n="hab_devops">DevOps & Herramientas</h4>
+                <div class="skills-grid">
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                            alt="Docker" class="img-inline-27"> Docker</span>
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+                            class="img-inline-28"> Git & GitHub</span>
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                            alt="VS Code" class="img-inline-29"> VS Code</span>
+                    <span class="skill-pill"><i class="fas fa-cube fas-inline-30"></i>
+                        NetBeans</span>
+                    <span class="skill-pill"><i class="fas fa-network-wired fas-inline-31"></i> Cisco PT</span>
+                    <span class="skill-pill"><i class="fas fa-server fas-inline-32"></i>
+                        XAMPP</span>
+                    <span class="skill-pill"><i class="fas fa-gamepad fas-inline-33"></i>
+                        GDevelop 5</span>
+                </div>
+
+                <h4 class="skill-category-title" data-i18n="hab_hardware">Hardware & Electrónica</h4>
+                <div class="skills-grid">
+                    <span class="skill-pill"><i class="fas fa-wrench fas-inline-34"></i> Mantenimiento</span>
+                    <span class="skill-pill"><i class="fas fa-microchip fas-inline-35"></i>
+                        Componentes</span>
+                </div>
+
+                <h4 class="skill-category-title" data-i18n="hab_learning">Actualmente explorando & aprendiendo</h4>
+                <div class="skills-grid">
+                    <span class="skill-pill"><img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+                            alt="Laravel" class="img-inline-36"> Laravel</span>
+                    <span class="skill-pill"><i class="fas fa-tools fas-inline-37"></i> Diagnóstico</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fila 3: Proyectos -->
+        <div class="container-proyecto full-width">
+            <!-- Proyecto Destacado -->
+            <section class="card padding-lg reveal proyecto-destacado-inline-38" id="proyecto-destacado">
+                <h2 class="section-title section-title-inline-39" data-i18n="proj_dest_title">Proyecto Destacado</h2>
+                <div class="destacado-container">
+                    <div class="project-card featured-project project-card-inline-40">
+                        <div class="div-inline-41">
+
+                            <!-- Columna Izquierda: Imágenes y Etiquetas -->
+                            <div class="featured-left featured-left-inline-42">
+                                <div class="mini-slider destacado mini-slider-inline-43">
+                                    <img src="proyectos/pvox/Feed.png" alt="Feed" class="slide-img active">
+                                    <img src="proyectos/pvox/Login.png" alt="Login" class="slide-img">
+                                    <img src="proyectos/pvox/Mi-perfil.png" alt="Mi perfil" class="slide-img">
+                                    <img src="proyectos/pvox/Editar-Mi-Perfil.png" alt="Editar Mi Perfil"
+                                        class="slide-img">
+                                    <img src="proyectos/pvox/Gestor-Usuarios.png" alt="Gestor Usuarios"
+                                        class="slide-img">
+                                    <img src="proyectos/pvox/Pvox-Studio.png" alt="Pvox Studio" class="slide-img">
+                                    <img src="proyectos/pvox/Post-Individual.png" alt="Post Individual"
+                                        class="slide-img">
+                                    <img src="proyectos/pvox/Mis-Favoritos.png" alt="Mis Favoritos" class="slide-img">
+                                    <img src="proyectos/pvox/Vista-Video-Post.png" alt="Vista Video Post"
+                                        class="slide-img">
+                                    <img src="proyectos/pvox/Enviar-Reporte.png" alt="Enviar Reporte" class="slide-img">
+                                    <img src="proyectos/pvox/Sanciones.png" alt="Sanciones" class="slide-img">
+                                    <img src="proyectos/pvox/Control-Mantenimiento.png" alt="Control Mantenimiento"
+                                        class="slide-img">
+                                    <img src="proyectos/pvox/Pantalla-Mantenimiento.png" alt="Pantalla Mantenimiento"
+                                        class="slide-img">
+                                </div>
+                                <div class="project-tags project-tags-inline-44">
+                                    <span class="tag blue">PHP 8</span>
+                                    <span class="tag blue">MySQL</span>
+                                    <span class="tag blue">JS Vanilla</span>
+                                    <span class="tag blue">API REST</span>
+                                    <span class="tag blue">Docker</span>
+                                    <span class="tag blue">FFmpeg</span>
+                                </div>
+                            </div>
+
+                            <!-- Columna Derecha: Textos Descriptivos -->
+                            <div class="featured-right project-info featured-right-inline-45">
+                                <h3 class="h3-inline-46" data-i18n="proj_dest_name">
+                                    Pvox - Red Social</h3>
+                                <div class="project-desc project-desc-inline-47">
+                                    <p class="p-inline-48" data-i18n="proj_dest_desc_p1">Plataforma de red social
+                                        orientada a la libre
+                                        expresión y la interacción asíncrona en tiempo real. Desarrollada con
+                                        arquitectura modular MVC en PHP puro, API REST y procesamiento distribuido en el
+                                        cliente.</p>
+                                    <p class="p-inline-49" data-i18n="proj_dest_desc_p2">Para superar limitaciones de
+                                        servidores compartidos,
+                                        emplea <strong>Edge Offloading</strong>: las imágenes se optimizan a WebP usando
+                                        Canvas API y los videos se transcodifican localmente a 720p mediante un Web
+                                        Worker de FFmpeg.</p>
+                                    <p class="p-inline-50" data-i18n="proj_dest_desc_p3">Cuenta con un sistema de
+                                        <strong>Server-Sent Events
+                                            (SSE)</strong> para monitoreo, autenticación segura con contraseñas
+                                        encriptadas (BCRYPT), consultas SQL blindadas (PDO), jerarquía de roles (RBAC) y
+                                        un motor de moderación matemático que oculta publicaciones conflictivas.
+                                    </p>
+                                    <p data-i18n="proj_dest_desc_p4">Además, dispone de <strong>Pvox Studio</strong>, un
+                                        entorno dedicado sin
+                                        distracciones para la creación de contenido multimedia, y soporta gestión de
+                                        modo mantenimiento con códigos de acceso dinámicos (Bypass).</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Fila Inferior: Botones -->
+                        <div class="featured-buttons featured-buttons-inline-51">
+                            <a href="https://pvox.42web.io/" class="btn-primary small-btn btn-primary-inline-52"
+                                target="_blank" rel="noopener noreferrer" data-i18n="btn_visitar_web">Visitar web</a>
+                            <a href="https://github.com/CJ7rafa/Pvox-Social-Network"
+                                class="btn-primary small-btn btn-primary-inline-53" target="_blank"
+                                rel="noopener noreferrer" data-i18n="btn_ver_doc">Ver
+                                Documentación</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Otros Proyectos -->
+            <section class="card padding-lg reveal" id="proyectos-secundarios">
+                <h2 class="section-title section-title-inline-54" data-i18n="proj_title">Proyectos</h2>
+                <div class="proyectos-grid proyectos-grid-inline-55">
+                    <!-- Proyecto 1: TuBarberia -->
+                    <div class="project-card">
+                        <div class="mini-slider">
+                            <img src="proyectos/tu-barberia/principal.png" alt="Principal" class="slide-img active">
+                            <img src="proyectos/tu-barberia/conocenos.png" alt="Conocenos" class="slide-img">
+                            <img src="proyectos/tu-barberia/reserva-cita.png" alt="Reserva Cita" class="slide-img">
+                            <img src="proyectos/tu-barberia/reserva-cita-2.png" alt="Reserva Cita 2" class="slide-img">
+                            <img src="proyectos/tu-barberia/cita-confirmada.png" alt="Cita Confirmada"
+                                class="slide-img">
+                            <img src="proyectos/tu-barberia/cita-reprogramacion.png" alt="Cita Reprogramacion"
+                                class="slide-img">
+                        </div>
+                        <div class="project-info">
+                            <h3>TuBarberia</h3>
+                            <div class="project-desc">
+                                <p class="short-desc short-desc-inline-56" data-i18n="proj_tu_barberia_short">Sistema
+                                    web multilocal para la gestión
+                                    y reserva de citas en barberías desarrollado en PHP nativo, con bloqueo dinámico de
+                                    horarios y autogestión mediante tokens sin registro.</p>
+                                <p class="long-desc long-desc-inline-57" data-i18n="proj_tu_barberia_long">
+                                    Incluye administración por sucursal, cálculo dinámico de duración según servicios
+                                    seleccionados y reprogramación masiva en cascada. El módulo administrativo integra
+                                    recorte de imágenes para catálogo y gestión de calendario. Maneja estados de citas
+                                    en tiempo real y arquitectura orientada a objetos en PHP 8.3 con almacenamiento
+                                    relacional en MariaDB. Desplegado en Alwaysdata con diseño responsivo e integración
+                                    de librerías como Cropper.js y Flatpickr.</p>
+                                <button class="read-more-btn read-more-btn-inline-58" onclick="toggleDesc(this)"
+                                    data-i18n="btn_leer_mas">Leer
+                                    más</button>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag blue">PHP 8</span>
+                                <span class="tag blue">MariaDB</span>
+                                <span class="tag blue">JavaScript</span>
+                                <span class="tag blue">HTML/CSS</span>
+                                <span class="tag blue">Cropper.js</span>
+                                <span class="tag blue">Flatpickr</span>
+                                <span class="tag blue">Alwaysdata</span>
+                            </div>
+                            <div class="featured-buttons featured-buttons-inline-59">
+                                <a href="https://tubarberia.alwaysdata.net/"
+                                    class="btn-primary small-btn btn-primary-inline-60" target="_blank"
+                                    rel="noopener noreferrer" data-i18n="btn_visitar_web">Visitar web</a>
+                                <a href="https://github.com/CJ7rafa/TuBarberia-appointment-manager"
+                                    class="btn-primary small-btn btn-primary-inline-61" target="_blank"
+                                    rel="noopener noreferrer" data-i18n="btn_ver_doc">Ver Doc</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2: IOSolver -->
+                    <div class="project-card">
+                        <div class="mini-slider">
+                            <img src="proyectos/iosolver/principal.png" alt="Principal" class="slide-img active">
+                            <img src="proyectos/iosolver/eoq-vacio.png" alt="Método EOQ vacio" class="slide-img">
+                            <img src="proyectos/iosolver/grafico-gen-lleno.png" alt="Metodo Gráfico lleno"
+                                class="slide-img">
+                            <img src="proyectos/iosolver/grafico-gen-lleno2.png" alt="Metodo Gráfico lleno"
+                                class="slide-img">
+                            <img src="proyectos/iosolver/grafos.png" alt="Metodo Ruta Corta lleno" class="slide-img">
+                            <img src="proyectos/iosolver/principal-lista.png" alt="Lista de Métodos disponible"
+                                class="slide-img">
+                            <img src="proyectos/iosolver/simplex-manual-lleno.png" alt="Metodo Simplex lleno"
+                                class="slide-img">
+                            <img src="proyectos/iosolver/simplex-manual-lleno2.png" alt="Metodo Simplex lleno"
+                                class="slide-img">
+                            <img src="proyectos/iosolver/simplex-manual-vacio.png" alt="Metodo Simplex vacio"
+                                class="slide-img">
+                        </div>
+                        <div class="project-info">
+                            <h3>IOSolver</h3>
+                            <div class="project-desc">
+                                <p class="short-desc short-desc-inline-62" data-i18n="proj_iosolver_short">Aplicación de
+                                    escritorio desarrollada
+                                    en JavaFX y tecnologías web para la resolución, simulación y análisis paso a paso de
+                                    problemas de Investigación de Operaciones y Optimización Matemática.</p>
+                                <p class="long-desc long-desc-inline-63" data-i18n="proj_iosolver_long">
+                                    Implementa una arquitectura híbrida desacoplada mediante un puente bidireccional
+                                    entre Java y JavaScript. Integra más de 10 módulos algorítmicos (Programación
+                                    Lineal, Simplex, Grafos, Colas e Inventarios) junto con un motor estocástico para
+                                    generación aleatoria de ejercicios. Incorpora visualización interactiva de redes con
+                                    vis.network, serialización de datos en formato JSON mediante Jackson y compilación
+                                    automática de bitácoras académicas a reportes PDF vectoriales.</p>
+                                <button class="read-more-btn read-more-btn-inline-64" onclick="toggleDesc(this)"
+                                    data-i18n="btn_leer_mas">Leer
+                                    más</button>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag green">Java</span>
+                                <span class="tag green">JavaFX</span>
+                                <span class="tag green">JavaScript</span>
+                                <span class="tag green">JSON</span>
+                                <span class="tag green">HTML/CSS</span>
+                                <span class="tag green">Maven</span>
+                                <span class="tag green">NetBeans</span>
+                            </div>
+                            <div class="featured-buttons featured-buttons-inline-65">
+                                <a href="https://github.com/CJ7rafa/IOSolver"
+                                    class="btn-primary small-btn btn-primary-inline-66" target="_blank"
+                                    rel="noopener noreferrer" data-i18n="btn_ver_codigo">Ver
+                                    Código</a>
+                                <a href="https://github.com/CJ7rafa/IOSolver/releases/tag/v2.0.0"
+                                    class="btn-primary small-btn btn-primary-inline-67" target="_blank"
+                                    rel="noopener noreferrer" data-i18n="btn_descargar">Descargar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 3: CV Web -->
+                    <div class="project-card">
+                        <div class="mini-slider">
+                            <img src="proyectos/cv-web/principal.png" alt="Pantalla principal del CV Web"
+                                class="slide-img active">
+                        </div>
+                        <div class="project-info">
+                            <h3>Portafolio Personal</h3>
+                            <div class="project-desc">
+                                <p class="short-desc short-desc-inline-68" data-i18n="proj_cv_web_short">Sitio web
+                                    desarrollado desde cero con
+                                    <strong>HTML5, CSS y JavaScript</strong> puro. Se enfoca en el rendimiento y la
+                                    estética moderna.
+                                </p>
+                                <p class="long-desc long-desc-inline-69" data-i18n="proj_cv_web_long">Incluye
+                                    integración de modo oscuro nativo, animaciones dinámicas al hacer scroll y un
+                                    formulario de contacto completamente funcional sin dependencias pesadas.</p>
+                                <button class="read-more-btn read-more-btn-inline-70" onclick="toggleDesc(this)"
+                                    data-i18n="btn_leer_mas">Leer
+                                    más</button>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag blue">HTML5</span>
+                                <span class="tag blue">CSS3</span>
+                                <span class="tag blue">JavaScript</span>
+                            </div>
+                            <a href="https://github.com/CJ7rafa/mi-cv-web" class="btn-primary small-btn" target="_blank"
+                                rel="noopener noreferrer" data-i18n="btn_ver_codigo">Ver Código</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 4: Despacho -->
+                    <div class="project-card">
+                        <div class="mini-slider">
+                            <video class="project-img" autoplay loop muted playsinline
+                                poster="proyectos/despacho/poster-video.png">
+                                <source src="proyectos/despacho/Despacho_Proyect.mp4" type="video/mp4">
+                                Tu navegador no soporta videos HTML5.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Despacho</h3>
+                            <div class="project-desc">
+                                <p class="short-desc short-desc-inline-71" data-i18n="proj_despacho_short">Sistema
+                                    Integral de Gestión Académica
+                                    (Java). Permite la administración de entidades mediante la implementación manual de
+                                    <strong>listas, pilas y colas</strong>, optimizando la gestión de memoria.
+                                </p>
+                                <p class="long-desc long-desc-inline-72" data-i18n="proj_despacho_long">Incluye
+                                    módulos de búsqueda optimizada, algoritmos recursivos y una interfaz gráfica
+                                    desarrollada en <strong>Swing (JFrames)</strong> con validación estricta de datos
+                                    para garantizar la integridad de la información.</p>
+                                <button class="read-more-btn read-more-btn-inline-73" onclick="toggleDesc(this)"
+                                    data-i18n="btn_leer_mas">Leer
+                                    más</button>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag green">Java SE</span>
+                                <span class="tag green">Apache NetBeans</span>
+                                <span class="tag green">Algoritmo</span>
+                                <span class="tag green">Swing/GUI</span>
+                                <span class="tag green">Recursividad</span>
+                            </div>
+                            <a href="https://github.com/CJ7rafa/Despacho/tree/main" class="btn-primary small-btn"
+                                target="_blank" rel="noopener noreferrer" data-i18n="btn_ver_codigo">Ver Código</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 5: Pvox Mobile -->
+                    <div class="project-card">
+                        <div class="mini-slider">
+                            <svg viewBox="0 0 800 450" class="slide-img active" style="background-color: black; width: 100%; height: 100%; object-fit: cover;" xmlns="http://www.w3.org/2000/svg">
+                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Impact, 'Arial Black', sans-serif" font-size="90" font-weight="bold" letter-spacing="2" data-i18n="proj_pvox_mobile_img">PRÓXIMAMENTE</text>
+                            </svg>
+                        </div>
+                        <div class="project-info">
+                            <h3>Pvox Mobile</h3>
+                            <div class="project-desc">
+                                <p class="short-desc short-desc-inline-74" data-i18n="proj_pvox_mobile_short">Versión
+                                    mobile de la red social Pvox.</p>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag green">Java</span>
+                                <span class="tag green">Android</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="proyectos-pagination" class="proyectos-pagination-inline-76">
+                    <button id="btn-ver-menos" onmouseover="if(!this.disabled) this.style.filter='brightness(0.95)'"
+                        onmouseout="this.style.filter='none'" class="btn-ver-menos-inline-77" data-i18n="btn_ver_menos">
+                        <i class="fas fa-chevron-up"></i> Menos
+                    </button>
+                    <button id="btn-ver-mas" onmouseover="if(!this.disabled) this.style.filter='brightness(0.95)'"
+                        onmouseout="this.style.filter='none'" class="btn-ver-mas-inline-78"
+                        data-i18n="btn_ver_mas_proyectos">
+                        Ver más proyectos <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+        <!-- Fila 4: Experiencia -->
+        <section class="card reveal" id="experiencia">
+            <h3 data-i18n="exp_title"><i class="fas fa-briefcase"></i>Experiencia</h3>
+            <div class="experiencia-container">
+                <!-- Empresa Camei S.A. -->
+                <div class="experiencia-item experiencia-item-inline-79">
+                    <!-- Logo -->
+                    <div class="div-inline-80">
+                        <img src="img/experiencia/cameiec_logo.jpg" alt="Camei S.A. Logo" class="img-inline-81">
+                    </div>
+                    <!-- Info -->
+                    <div class="div-inline-82">
+                        <div class="flex-between flex-between-inline-83">
+                            <div>
+                                <p class="bold bold-inline-84">Empresa Camei S.A.</p>
+                                <p class="muted muted-inline-85" data-i18n="exp_camei_role">Pasante - Auxiliar
+                                    Administrativo</p>
+                            </div>
+                            <div class="div-inline-86">
+                                <span class="muted muted-inline-87" data-i18n="exp_camei_date">Dic 2023</span>
+                                <span class="muted muted-inline-88">Guayaquil, Ecuador</span>
+                            </div>
+                        </div>
+                        <p class="con-punto con-punto-inline-89" data-i18n="exp_camei_p1">Gestioné la digitalización y
+                            organización de
+                            documentación operativa garantizando la precisión del archivo interno.</p>
+                        <p class="con-punto" data-i18n="exp_camei_p2">Ejecuté el control y registro de inventarios para
+                            la optimización y
+                            verificación de bienes de la empresa.</p>
+                    </div>
+                </div>
+
+                <!-- Mercado Municipal -->
+                <div class="experiencia-item experiencia-item-inline-90">
+                    <!-- Logo -->
+                    <div class="div-inline-91">
+                        <img src="img/experiencia/Municipal.jpg" alt="Mercado Municipal Logo" class="img-inline-92">
+                    </div>
+                    <!-- Info -->
+                    <div class="div-inline-93">
+                        <div class="flex-between flex-between-inline-94">
+                            <div>
+                                <p class="bold bold-inline-95">Mercado Municipal
+                                    "Prosperina"</p>
+                                <p class="muted muted-inline-96" data-i18n="exp_mercado_role">Asistente de Local /
+                                    Atención al Cliente
+                                </p>
+                            </div>
+                            <div class="div-inline-97">
+                                <span class="muted muted-inline-98" data-i18n="exp_mercado_date">Ene 2021 -
+                                    Presente</span>
+                                <span class="muted muted-inline-99">Guayaquil, Ecuador</span>
+                            </div>
+                        </div>
+                        <p class="con-punto con-punto-inline-100" data-i18n="exp_mercado_p1">Asesoré a los clientes en
+                            la selección de
+                            productos garantizando una experiencia de compra eficiente.</p>
+                        <p class="con-punto" data-i18n="exp_mercado_p2">Manejé inventario y reabastecimiento en punto de
+                            venta asegurando
+                            disponibilidad continua.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fila 5: Educacion y Aptitudes -->
+        <div class="layout-row-split-even">
+            <div class="layout-col">
+                <section class="card reveal" id="educacion">
+                    <h3 data-i18n="edu_title"><i class="fas fa-graduation-cap"></i> Educación</h3>
+                    <div class="experiencia-container">
+
+                        <!-- Universidad de Guayaquil -->
+                        <div class="experiencia-item experiencia-item-inline-101">
+                            <div class="div-inline-102">
+                                <img src="img/educacion/UG-FCMF.jpg" alt="Universidad de Guayaquil"
+                                    class="img-inline-103">
+                            </div>
+                            <div class="div-inline-104">
+                                <div class="flex-between flex-between-inline-105">
+                                    <div>
+                                        <p class="bold bold-inline-106" data-i18n="edu_ug_name">Universidad de
+                                            Guayaquil</p>
+                                        <p class="muted muted-inline-107" data-i18n="edu_ug_title">Ingeniería en Software</p>
+                                    </div>
+                                    <div class="div-inline-108">
+                                        <span class="muted muted-inline-109" data-i18n="edu_ug_date">2024 -
+                                            Presente</span>
+                                        <span class="muted muted-inline-110">Guayaquil, Ecuador</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fundación Carlos Slim -->
+                        <div class="experiencia-item experiencia-item-inline-111">
+                            <div class="div-inline-112">
+                                <img src="img/educacion/Carlos-Slim.jpg" alt="Fundación Carlos Slim"
+                                    class="img-inline-113">
+                            </div>
+                            <div class="div-inline-114">
+                                <div class="flex-between flex-between-inline-115">
+                                    <div>
+                                        <p class="bold bold-inline-116">Fundación Carlos
+                                            Slim</p>
+                                        <p class="muted muted-inline-117" data-i18n="edu_slim_title">Certificación en
+                                            Programación de
+                                            Microcontroladores (82 horas)</p>
+                                    </div>
+                                    <div class="div-inline-118">
+                                        <span class="muted muted-inline-119" data-i18n="edu_slim_date">Feb
+                                            2024</span>
+                                        <span class="muted muted-inline-120" data-i18n="edu_slim_type">Formación
+                                            Continua</span>
+                                    </div>
+                                </div>
+                                <a href="https://capacitateparaelempleo.org/verifica/7692d437-995d-44d9-864c-e28dfc9f22fc/d7d4afbc-1455-47c5-83d5-9937ba13ab94"
+                                    target="_blank" rel="noopener noreferrer" class="a-inline-121"
+                                    data-i18n="edu_slim_btn">Ver
+                                    Certificado Oficial</a>
+                            </div>
+                        </div>
+
+                        <!-- Unidad Educativa 28 de Mayo -->
+                        <div class="experiencia-item experiencia-item-inline-122">
+                            <div class="div-inline-123">
+                                <img src="img/educacion/28-mayo.jpg" alt="Colegio 28 de Mayo" class="img-inline-124">
+                            </div>
+                            <div class="div-inline-125">
+                                <div class="flex-between flex-between-inline-126">
+                                    <div>
+                                        <p class="bold bold-inline-127">Unidad Educativa
+                                            Fiscal "28 de Mayo"</p>
+                                        <p class="muted muted-inline-128" data-i18n="edu_28_title">Bachiller Técnico en
+                                            Contabilidad
+                                        </p>
+                                    </div>
+                                    <div class="div-inline-129">
+                                        <span class="muted muted-inline-130" data-i18n="edu_28_date">Graduado</span>
+                                        <span class="muted muted-inline-131">Guayaquil, Ecuador</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <section class="card reveal">
+                    <h3 data-i18n="disp_title"><i class="fas fa-clock"></i> Disponibilidad</h3>
+                    <div class="item">
+                        <p class="bold bold-inline-132" data-i18n="disp_type">Tiempo completo</p>
+                        <p class="muted no-justify muted-inline-133" data-i18n="disp_desc">En receso académico, con
+                            libertad de
+                            ajustar la
+                            jornada universitaria fija según la necesidad del empleador.</p>
+                    </div>
+                </section>
+            </div>
+            <div class="layout-col">
+                <section class="card reveal card-inline-134">
+                    <h3 class="h3-inline-135" data-i18n="apt_title"><i class="fas fa-brain"></i>
+                        Aptitudes Clave</h3>
+                    <div class="div-inline-136">
+                        <canvas id="aptitudesChart"></canvas>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Fila 6: Contacto -->
+        <div class="contacto">
+            <section class="card reveal padding-lg" id="contacto">
+                <h2 class="section-title" data-i18n="contact_title">Contactos</h2>
+
+                <p class="p-inline-137" data-i18n="contact_subtitle">
+                    <strong>¿Tienes algún proyecto o consulta?</strong><br> Elige tu canal preferido:
+                </p>
+
+                <div class="buttons-wrapper buttons-wrapper-inline-138">
+                    <a href="mailto:rafaelolver2006@gmail.com?subject=Contacto%20Portafolio"
+                        class="email-btn btn-contact" data-i18n="btn_email">
+                        <i class="fas fa-envelope"></i> Enviar Correo
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/rafael-olvera-vera-682b35306" class="btn-linkedin btn-contact"
+                        target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+
+                    <a href="https://github.com/CJ7rafa" class="btn-github btn-contact" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+
+                    <div class="contact-divider"></div>
+
+                    <a href="https://x.com/CJ7rafa0" class="btn-x btn-contact" target="_blank">
+                        <i class="fab fa-twitter"></i> X
+                    </a>
+                    <a href="https://www.instagram.com/rafaelolvera_cj7/" class="btn-instagram btn-contact"
+                        target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
                     </a>
                 </div>
             </section>
 
 
-            <section class="card reveal">
-                <h3><i class="fas fa-layer-group"></i>Entornos & Herramientas</h3>
-                <ul class="skills-list">
-                    <li><span>Apache NetBeans</span><span class="tag green">Avanzado</span></li>
-                    <li><span>Visual Studio Code</span><span class="tag green">Avanzado</span></li>
-                    <li><span>GDevelop 5</span><span class="tag sky">Intermedio</span></li>
-                    <li><span>Canva</span><span class="tag blue">Intermedio</span></li>
-                    <li><span>XAMPP</span><span class="tag gray">En proceso</span></li>
-                    <li><span>Blender</span><span class="tag gray">En proceso</span></li>
-                    
-                </ul>
-            </section>
-
-            <section class="card reveal">
-                <h3><i class="fas fa-language"></i> Idiomas</h3>
-                <div class="item flex-between">
-                    <span>Español</span>
-                    <span class="tag green">Nativo</span>
-                </div>
-                <div class="item flex-between">
-                    <span>Inglés</span>
-                    <span class="tag sky">Intermedio</span>
-                </div>
-            </section>
-        </aside>
-
-        <main class="content">
-            <section class="card reveal">
-                <h2 class="section-title">Sobre Mí</h2>
-                <div class="bio">
-                    <p>Estudiante de Ingeniería en Software en la Universidad de Guayaquil (Ecuador),
-                        apasionado por la tecnología y con capacidad técnica para el diagnóstico, ensamblaje
-                         y mantenimiento de hardware moderno. Actualmente, profundizo mis conocimientos
-                         en desarrollo backend, estructuras de datos y resolución de problemas algorítmicos.
-                    </p>
-                    <p style="margin-top: 10px;">En constante evolución, estoy expandiendo mi perfil
-                        técnico hacia el modelado 3D y el desarrollo web, abarcando el ciclo completo
-                        de un proyecto: desde la conceptualización y diseño hasta la creación, codificación
-                        e implementación final de sitios web funcionales.
-                    </p>
-                </div>
-            </section>
-
-            <section class="card reveal">
-                <h3><i class="fas fa-briefcase"></i>Experiencia</h3>
-                <ul class="skills-list">
-                    
-                    <li><span>
-                        <p class="bold">CAMEI S.A</p>
-                        <p>Auxiliar Administrativo</p>
-                        <p class="con-punto">Manejo de procesos administrativos y contables.</p>
-                        <p class="con-punto">Control y auditoría de inventarios.</p>
-                        <p class="con-punto">Gestión de documentación técnica y legal.</p>
-                    </span></li>
-
-                    <li><span>
-                        <p class="bold">Mercado Municipal "Prosperina"</p>
-                        <p>2021-2026</p>
-                        <p class="con-punto">Atención a cliente</p>
-                        <p class="con-punto">Cobro en efectivo</p>
-                        <p class="con-punto">Colaboración en tareas generales del local(limpieza,
-                            organización de perchas y mercadería)</p>
-                    </span></li>
-                </ul>
-            </section>
-
-            <section class="card reveal">
-                <h3><i class="fas fa-tools"></i> Habilidades Técnicas</h3>
-                
-                <div class="skills-container" style="margin-top: 20px;">
-                    
-                    <div class="skill-item">
-                        <div class="flex-between">
-                            <span class="skill-name"><i class="fab fa-java"></i> Java - POO</span>
-                            <span class="skill-percent">60%</span> </div>
-                        <div class="progress-track">
-                            <div class="progress-fill progress-fill-java" style="width: 60%;"></div> 
-                        </div>
-                    </div>
-
-                    <div class="skill-item">
-                        <div class="flex-between">
-                            <span class="skill-name"><i class="fab fa-html5"></i> HTML5 &nbsp;&&nbsp; <i class="fab fa-css3-alt"></i> CSS3</span>
-                            <span class="skill-percent">30%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill progress-fill-html" style="width: 30%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item">
-                        <div class="flex-between">
-                            <span class="skill-name"><i class="fab fa-php"></i> PHP</span>
-                            <span class="skill-percent">30%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill progress-fill-php" style="width: 30%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-item">
-                        <div class="flex-between">
-                            <span class="skill-name"><i class="fab fa-python"></i> PYTHON</span>
-                            <span class="skill-percent">50%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill progress-fill-python" style="width: 50%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="flex-between">
-                            <span class="skill-name"><i class="fab fa-js"></i> JavaScript</span>
-                            <span class="skill-percent">20%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill progress-fill-js" style="width: 20%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="flex-between">
-                            <span class="skill-name"><i class="fas fa-microchip"></i> Inteligencia Artificial</span>
-                            <span class="skill-percent">70%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill progress-fill-ai" style="width: 70%;"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <section class="card reveal">
-                <h3><i class="fas fa-brain"></i> Aptitudes</h3>
-                
-                <div class="aptitudes-grid">
-                    
-                    <div class="skills-column">
-                        <h4 class="skill-category">Competencias Profesionales</h4>
-                        <ul class="skills-list">
-                            <li><span>Arquitectura de Datos</span></li>
-                            <li><span>Análisis de Requerimientos</span></li>
-                            <li><span>Resolución de Problemas Algorítmicos</span></li>
-                            <li><span>Documentación Técnica</span></li>
-                            <li><span>Comunicación Técnica</span></li>
-                        </ul>
-                    </div>
-
-                    <div class="skills-column">
-                        <h4 class="skill-category">Aptitudes Personales</h4>
-                        <ul class="skills-list">
-                            <li><span>Capacidad de Aprendizaje Autónomo</span></li>
-                            <li><span>Adaptabilidad</span></li>
-                            <li><span>Pensamiento Creativo</span></li>
-                            <li><span>Atención al Detalle</span></li>
-                            <li><span>Organización</span></li>
-                        </ul>
-                    </div>
-
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <div class="container-proyecto">
-        <section class="card padding-lg reveal" id="proyectos">
-            <h2 class="section-title">Mis Proyectos</h2>
-
-            <div class="carousel-container">
-                
-                <button class="carousel-btn prev-btn" id="prevBtn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-
-                <div class="carousel-slide-wrapper">
-                    <div class="carousel-slides" id="track">
-                        
-                        <div class="project-card">
-                            <div class="mini-slider">
-                                <img src="img/batalla_pich/Batalla_Pich_1_Proyect.png" alt="Vista 1 - Del Juego" class="slide-img active">
-                                <img src="img/batalla_pich/Batalla_Pich_2_Proyect.png" alt="Vista 2 - Del Juego" class="slide-img">
-                                <img src="img/batalla_pich/Batalla_Pich_3_Proyect.png" alt="Vista 3 - Del Juego" class="slide-img">
-                                <img src="img/batalla_pich/Batalla_Pich_4_Proyect.png" alt="Vista 4 - Del Juego" class="slide-img">
-                                <img src="img/batalla_pich/Batalla_Pich_5_Proyect.png" alt="Vista 5 - Del Juego" class="slide-img">
-                                <img src="img/batalla_pich/Batalla_Pich_6_Proyect.png" alt="Vista 6 - Del Juego" class="slide-img">
-                                <img src="img/batalla_pich/Batalla_Pich_7_Proyect.png" alt="Vista 7" class="slide-img">
-                            </div>
-                            <div class="project-info">
-                                <h3>La Batalla del Pichincha - Videojuego 2D</h3>
-                                <p>Plataformero 2D educativo inspirado en la <strong>Batalla del Pichincha</strong>. Supera circuitos
-                                    estratégicos recolectando banderas para avanzar de nivel y descubre el lore histórico
-                                    de la gesta de 1822 en cada transición. Diseñado para fomentar el conocimiento de
-                                    la historia nacional mediante mecánicas interactivas de rescate y exploración.</p>
-                                <div class="project-tags">
-                                    <span class="tag blue">GDevelop</span>
-                                    <span class="tag blue">Lógica</span>
-                                    <span class="tag blue">Pixel Art</span>
-                                    <span class="tag blue">Plataforma 2D</span>
-                                    <span class="tag blue">Narración</span>
-                                </div>
-                                <a href="https://gd.games/instant-builds/1ce0e1c1-3f8c-4d4b-a6a1-d0a46759c08f" 
-                                    class="btn-jugar small-btn" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer">
-                                    Jugar Demo
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="mini-slider">
-                                <video class="project-img" autoplay loop muted playsinline poster="img/poster-video.jpg">
-                                    <source src="img/Despacho_Proyect.mp4" type="video/mp4">
-                                    Tu navegador no soporta videos HTML5.
-                                </video>
-                            </div>
-                            
-                            <div class="project-info">
-                                <h3>Despacho</h3>
-                                <p>Sistema Integral de Gestión Académica (Java) Desarrollo de una aplicación de escritorio. El sistema permite la administración de entidades
-                                    mediante la implementación manual de <strong>listas simples, dobles, pilas y colas</strong>, evitando
-                                    el uso de librerías externas para profundizar en la lógica de punteros y gestión de memoria. Incluye módulos de búsqueda
-                                    optimizada, algoritmos de ordenamiento recursivos y una interfaz gráfica desarrollada en <strong>Swing (JFrames)</strong> con un sistema
-                                    estricto de validación de datos para garantizar la integridad de la información.</p>
-                                <div class="project-tags">
-                                    <span class="tag green">Java SE</span>
-                                    <span class="tag green">Apache NetBeans</span>
-                                    <span class="tag green">Algoritmo</span>
-                                    <span class="tag green">Swing/GUI</span>
-                                    <span class="tag green">Recursividad</span>
-                                </div>
-                                <a href="https://github.com/CJ7rafa/Despacho/tree/main" 
-                                    class="btn-primary small-btn" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer">
-                                    Ver Codigo
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="mini-slider">
-                                <img src="img/CV_Pag.png" alt="Proyecto Despacho" class="slide-img active">
-                            </div>
-                            
-                            <div class="project-info">
-                                <h3>Portafolio Personal</h3>
-                                <p>Sitio web desarrollado desde cero con <strong>HTML5, CSS y JavaScript</strong> puro.
-                                    Incluye modo oscuro, animaciones al hacer scroll y formulario de contacto funcional.</p>
-                                <div class="project-tags">
-                                    <span class="tag blue">HTML5</span>
-                                    <span class="tag blue">CSS3</span>
-                                    <span class="tag blue">JavaScript</span>
-                                </div>
-                                <a href="https://github.com/CJ7rafa/mi-cv-web" 
-                                    class="btn-primary small-btn" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer">
-                                    Ver Codigo
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="mini-slider">
-                                <img src="img/merge_cube/Merge_Cube_1.png" alt="Vista 1 - Merge Cube" class="slide-img active">
-                                <img src="img/merge_cube/Merge_Cube_2.png" alt="Vista 2 - Merge Cube" class="slide-img">
-                                <img src="img/merge_cube/Merge_Cube_3.png" alt="Vista 3 - Merge Cube" class="slide-img">
-                            </div>
-                            
-                            <div class="project-info">
-                                <h3>Anatomía AR con Merge Cube</h3>
-                                <p class="text-justify">
-                                    Experiencia educativa en <strong>Realidad Aumentada</strong> donde cada cara del cubo despliega un módulo de aprendizaje distinto. 
-                                    Un <strong>asistente virtual</strong> guía al usuario a través de las 6 caras, explicando e iluminando individualmente los huesos principales 
-                                    (frontal, occipital, esfenoides, etmoides, parietales y temporales). El sistema utiliza animaciones de resaltado progresivo 
-                                    para facilitar la identificación anatómica de forma visual e intuitiva, evitando la sobrecarga de tecnicismos.
-                                </p>
-                                
-                                <div class="project-tags">
-                                    <span class="tag purple">Realidad Aumentada</span>
-                                    <span class="tag purple">Delightex Studio</span>
-                                    <span class="tag purple">Merge Cube</span>
-                                    <span class="tag purple">Educación Visual</span>
-                                </div>
-                                
-                                <div class="buttons-wrapper">
-                                    <a href="/docs/Merge_Cube_PROYECTO.pdf" 
-                                    class="btn-primary small-btn" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer">
-                                    Ver Documentación
-                                    </a>
-
-                                    <a href="https://edu.delightex.com/WUR-SFD" 
-                                    class="btn-jugar small-btn" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer">
-                                    Jugar
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="mini-slider">
-                                <img src="img/Proximamente.jpg" alt="Proximamente" class="slide-img active">
-                            </div>
-                            
-                            <div class="project-info">
-                                <h3>Moodle</h3>
-                                <p>Proximamente.</p>
-                                <div class="project-tags">
-                                    <span class="tag blue">Proximamente</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card">
-                            <div class="mini-slider">
-                                <img src="img/Proximamente.jpg" alt="Proximamente" class="slide-img active">
-                            </div>
-                            
-                            <div class="project-info">
-                                <h3>Red Social</h3>
-                                <p>Proximamente.</p>
-                                <div class="project-tags">
-                                    <span class="tag blue">Proximamente</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-btn next-btn" id="nextBtn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div> 
-                <div class="carousel-indicators">
-                    <button class="dot active" data-index="0"></button>
-                    <button class="dot" data-index="1"></button>
-                    <button class="dot" data-index="2"></button>
-                    <button class="dot" data-index="3"></button>
-                    <button class="dot" data-index="4"></button>
-                    <button class="dot" data-index="5"></button>
-                </div>
-        </section>
+        </div>
     </div>
 
 
-    <div class="contacto">
-        <section class="card reveal" id="contacto">
-            <h2 class="section-title">Contáctame</h2>
 
-            <div class="contact-split-container">
 
-                <div class="contact-left">
-                    <p style="margin-bottom: 25px; font-size: 1.1rem; color: var(--text-main);">
-                        <strong>¿Tienes algún proyecto o consulta?</strong><br> Elige tu canal preferido:
-                    </p>
 
-                    <div class="buttons-wrapper-vertical">
-                        
-                        <a href="mailto:rafaelolver2006@gmail.com?subject=Contacto%20Portafolio" class="email-btn btn-contact">
-                            <i class="fas fa-envelope"></i> Enviar Correo
-                        </a>
-
-                        <a href="https://wa.me/593961676395?text=Hola+Rafael,+vi+tu+portafolio" class="btn-whatsapp btn-contact" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/rafael-olvera-vera-682b35306" class="btn-linkedin btn-contact" target="_blank">
-                            <i class="fab fa-linkedin"></i> LinkedIn
-                        </a>
-
-                        <a href="https://calendly.com" class="btn-calendly btn-contact" target="_blank">
-                            <i class="fas fa-calendar-check"></i> Agendar Cita
-                        </a>
-
-                        <a href="https://github.com/CJ7rafa" class="btn-github btn-contact" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <div class="contact-right">
-                    <h3 class="section-subtitle" style="margin-top: 0;">O envíame un mensaje directo:</h3>
-                    
-                    <div id="status-container" class="status-box hidden"></div>
-
-                    <form id="contact-form" name="contacto" method="POST" data-netlify="true">
-                        <input type="hidden" name="form-name" value="contacto" />
-
-                        <div class="form-group">
-                            <label for="nombre">Nombre Completo</label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required class="input-bonito">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" placeholder="juan@ejemplo.com" required class="input-bonito">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="mensaje">Tu Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" placeholder="Hola Rafael..." required class="input-bonito" rows="4"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-primary" style="width: 100%;">
-                            Enviar Mensaje <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="card reveal feedback-section">
-            <h3 style="color: var(--accent);"><i class="fas fa-rocket"></i> Ayúdame a Crecer</h3>
-
-            <p style="margin-bottom: 20px;">
-                Valoro tu opinión. Selecciona un tema para enviarme tu recomendación directa por <strong>WhatsApp</strong>:
-            </p>
-            <div class="feedback-grid">
-                <a href="https://wa.me/593961676395?text=Hola%20Rafael,%20te%20recomiendo%20aprender%20esta%20tecnolog%C3%ADa%20o%20framework:..."
-                class="feedback-item" target="_blank">
-                    <i class="fas fa-code"></i>
-                    <span>Stack Tecnológico</span>
-                    <small>¿Qué lenguaje sigue?</small>
-                </a>
-
-                <a href="https://wa.me/593961676395?text=Hola%20Rafael,%20vi%20tu%20c%C3%B3digo%20y%20tengo%20una%20sugerencia%20sobre%20tus%20validaciones/arquitectura:"
-                class="feedback-item" target="_blank">
-                    <i class="fas fa-vial"></i>
-                    <span>Calidad de Código</span>
-                    <small>Feedback de mis proyectos</small>
-                </a>
-
-                <a href="https://wa.me/593961676395?text=Hola%20Rafael,%20te%20sugiero%20obtener%20esta%20certificaci%C3%B3n%20para%20tu%20perfil:"
-                class="feedback-item" target="_blank">
-                    <i class="fas fa-certificate"></i>
-                    <span>Certificaciones</span>
-                    <small>Inglés o Técnicas</small>
-                </a>
-
-                <a href="https://wa.me/593961676395?text=Hola%20Rafael,%20revis%C3%A9%20tu%20portafolio%20y%20tengo%20algunas%20observaciones%20sobre%20la%20Experiencia%20de%20Usuario%20(UX)%20y%20el%20dise%C3%B1o:..."
-                class="feedback-item" target="_blank">
-                    <i class="fas fa-magic"></i>
-                    <span>UX & Diseño Web</span>
-                    <small>¿Cómo mejorarías la navegación?</small>
-                </a>
-
-                <a href="https://wa.me/593961676395?text=Hola%20Rafael,%20tengo%20un%20comentario%20general%20o%20propuesta:"
-                class="feedback-item" target="_blank">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>Otro Tema</span>
-                    <small>Propuestas o consejos</small>
-                </a>
-            </div>
-        </section>
-    </div>
 
     <footer class="footer">
         <div class="container">
-            <p class="no-justify">&copy; 2026 Rafael Alfonso Olvera Vera. Portafolio Personal.</p>
-            <p class="no-justify"> Fecha de actualización: 27/01/2026</p>
+            <p class="no-justify" data-i18n="footer_copy">&copy; 2026 Rafael Olvera. Portafolio Personal.</p>
+            <p class="no-justify" data-i18n="footer_update">Fecha de actualización: 08/08/2026</p>
+
+            <div class="footer-aliados">
+                <span data-i18n="footer_aliados">Aliados Estratégicos:</span>
+                <a href="https://adrianlous.netlify.app/" target="_blank">Adrían Loureiro</a> |
+                <a href="https://luminous-piroshki-0e7ffc.netlify.app/" target="_blank">Alfonso Alvarado</a> |
+                <a href="https://cvallanrodriguez.netlify.app/" target="_blank">Allan Rodriguez</a> |
+                <a href="https://cv-angel-luna.netlify.app/" target="_blank">Angel Luna</a> |
+                <a href="https://justin-farias.netlify.app/" target="_blank">Justin Farias</a> |
+                <a href="https://portafolio-jonathan-cortez.netlify.app/" target="_blank">Jonathan Cortez</a>
+            </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dictionary.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
