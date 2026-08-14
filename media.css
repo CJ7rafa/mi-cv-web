@@ -46,7 +46,8 @@
 
     .div-inline-136 {
         width: 100% !important;
-        justify-content: center !important; /* Si el canvas cabe, se centra. Pero le diremos al canvas que sea max 100% */
+        justify-content: center !important;
+        /* Si el canvas cabe, se centra. Pero le diremos al canvas que sea max 100% */
     }
 
     /* Asegurar que el gráfico de telaraña se reduzca en pantallas muy pequeñas */
@@ -69,6 +70,11 @@
     }
 
     .featured-buttons-inline-51 {
+        display: block;
+    }
+
+    .featured-buttons-inline-59,
+    .featured-buttons-inline-65 {
         display: block;
     }
 
@@ -167,7 +173,6 @@
         display: inline-block;
         margin: 0 10px 5px 0 !important;
         font-weight: 600;
-        color: var(--accent);
     }
 
     /* Fila 2: Lugar y Fecha */
@@ -215,5 +220,31 @@
     /* Mostrar las redes sociales del panel solo en celulares */
     .panel-social-links {
         display: flex !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-container {
+        width: auto;
+    }
+
+    .skills-grid {
+        gap: 0;
+    }
+
+    .skill-pill {
+        margin: 10px;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .skill-category-title {
+        font-size: 1.1rem;
+    }
+
+    .div-inline-41 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 }
