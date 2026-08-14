@@ -5,9 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const icon = themeBtn.querySelector('i');
 
-    // Revisar preferencia guardada
-    if (localStorage.getItem('theme') === 'dark') {
-        enableDarkMode();
+    // Revisar preferencia guardada (Oscuro por defecto)
+    if (localStorage.getItem('theme') === 'light') {
+        disableDarkMode();
+    } else {
+        enableDarkMode(); // Aplica oscuro si es 'dark' o si es la primera vez (null)
     }
 
     themeBtn.addEventListener('click', () => {
@@ -54,57 +56,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, {
         root: null,
-        threshold: 0.2, // Se activa cuando el 10% del elemento es visible
-        rootMargin: "0px 0px -50px 0px" // Margen extra
+        threshold: 0, // Cambiado a 0 para solucionar el bug de elementos altos
+        rootMargin: "-50px 0px -50px 0px" // Margen simétrico para subir y bajar
     });
 
     reveals.forEach(reveal => {
-        revealObserver.observe(reveal);
+        // Solución: Si el elemento ya quedó arriba (ej: al recargar la página abajo),
+        // lo activamos inmediatamente para que no desaparezca.
+        if (reveal.getBoundingClientRect().bottom < 0) {
+            reveal.classList.add('active');
+        } else {
+            revealObserver.observe(reveal);
+        }
     });
 
-    /* --- LÓGICA DEL FORMULARIO DE CONTACTO (AJAX NETLIFY) --- */
-
-    const contactForm = document.getElementById('contact-form');
-    const statusBox = document.getElementById('status-container');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // 1. Evita que la página se recargue
-
-            const myForm = e.target;
-            const formData = new FormData(myForm);
-
-            // 2. Mostrar estado de "Cargando"
-            statusBox.classList.remove('hidden');
-            statusBox.style.display = 'block';
-            statusBox.className = 'status-box sending';
-            statusBox.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando mensaje...';
-
-            // 3. Enviar datos a Netlify
-            fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString()
-            })
-                .then(() => {
-                    // 4. ÉXITO
-                    statusBox.className = 'status-box success';
-                    statusBox.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito!';
-                    myForm.reset(); // Limpia los campos
-
-                    // Opcional: Ocultar el mensaje después de 5 segundos
-                    setTimeout(() => {
-                        statusBox.style.display = 'none';
-                    }, 5000);
-                })
-                .catch((error) => {
-                    // 5. ERROR
-                    console.error(error);
-                    statusBox.className = 'status-box error';
-                    statusBox.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Hubo un error. Intenta por WhatsApp.';
-                });
-        });
-    }
 
     // --- 5. MINI-SLIDER AUTOMÁTICO ---
     const miniSliders = document.querySelectorAll('.mini-slider');
@@ -398,16 +363,16 @@ document.addEventListener('DOMContentLoaded', () => {
             option.addEventListener('click', () => {
                 const val = option.getAttribute('data-value');
                 const text = option.textContent;
-                
+
                 // Update text
                 selectedText.textContent = text;
-                
+
                 // Update native select and trigger change
                 if (nativeSelect) {
                     nativeSelect.value = val;
                     nativeSelect.dispatchEvent(new Event('change'));
                 }
-                
+
                 // Close menu
                 customMenu.classList.remove('active');
                 caret.style.transform = 'rotate(0deg)';
@@ -418,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('click', (e) => {
             if (!document.getElementById('lang-custom-container').contains(e.target)) {
                 customMenu.classList.remove('active');
-                if(caret) caret.style.transform = 'rotate(0deg)';
+                if (caret) caret.style.transform = 'rotate(0deg)';
             }
         });
     }
