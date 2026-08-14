@@ -1701,6 +1701,7 @@ video.project-img {
 
 .muted {
     font-size: 1.2rem;
+    font-weight: 900;
 }
 
 
@@ -1765,7 +1766,7 @@ body.dark-mode .sticky-navbar {
 /* 2. Diseño "Premium" del Botón */
 .btn-ver-menos-inline-77 {
     width: 25%;
-    padding: 18px;
+    padding: 28px 0;
     border: none;
     background: var(--card-bg);
     color: var(--text-main);
@@ -1773,19 +1774,21 @@ body.dark-mode .sticky-navbar {
     cursor: pointer;
     border-right: 1px solid var(--border);
     transition: filter 0.2s;
+    font-size: 1.3rem;
 }
 
 
 /* Efecto al pasar el mouse */
 .btn-ver-mas-inline-78 {
     flex-grow: 1;
-    padding: 18px;
+    padding: 28px 0;
     border: none;
     background: var(--card-bg);
     color: var(--accent);
     font-weight: bold;
     cursor: pointer;
     transition: filter 0.2s;
+    font-size: 1.3rem;
 }
 
 
@@ -1795,8 +1798,8 @@ body.dark-mode .sticky-navbar {
     gap: 20px;
     align-items: flex-start;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 25px;
-    margin-bottom: 25px;
+    padding-bottom: 35px;
+    margin-bottom: 35px;
 }
 
 
@@ -1840,7 +1843,7 @@ body.dark-mode .sticky-navbar {
 
 /* Columna de Botones (Izquierda) */
 .bold {
-    font-weight: 600;
+    font-weight: 550;
     color: var(--text-main);
 }
 
@@ -2323,7 +2326,7 @@ body.dark-mode .sticky-navbar {
     transition: transform 0.2s, opacity 0.2s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     height: 62px;
-    width: 180px;
+    min-width: 200px;
 }
 
 
@@ -3362,10 +3365,12 @@ pero podemos cambiar colores y fondo */ .btn-dropdown option {
    ESTILOS REDES SOCIALES EN PANEL (MÓVIL)
    ========================================= */
 .panel-social-links {
-    display: none; /* Se ocultan en PC por defecto */
+    display: none;
+    /* Se ocultan en PC por defecto */
     justify-content: center;
     gap: 25px;
-    margin-top: auto; /* Push it to the bottom */
+    margin-top: auto;
+    /* Push it to the bottom */
     padding-top: 30px;
     padding-bottom: 10px;
 }
