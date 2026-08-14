@@ -10,21 +10,21 @@ const dictionary = {
         "nav_contacto": "Contacto",
         "nav_descargar_cv": "Descargar CV <i class=\"fas fa-arrow-down\"></i>",
         "nav_modo_oscuro": "Modo Oscuro",
-        
+
         // --- Hero ---
         "hero_greeting": "Hola, mi nombre es",
         "hero_name": "Rafael Olvera.",
-        "hero_subtitle": "Construyo cosas para web.",
+        "hero_subtitle": "Construyo cosas para la web.",
         "hero_desc": "Estudiante de Ingeniería en Software con un fuerte enfoque en el desarrollo backend y el aseguramiento de calidad. Combino una gran atención al detalle con la capacidad de resolver problemas complejos, buscando aportar valor mediante soluciones precisas y eficientes.",
         "hero_btn": "Ver mis proyectos",
-        
+
         // --- Sobre Mí ---
         "sobre_mi_title": "Sobre Mí",
         "sobre_mi_location": "<i class=\"fas fa-map-marker-alt\"></i> Guayaquil, Ecuador",
         "sobre_mi_p1": "Mi pasión por la tecnología comenzó con el interés en la creación de videojuegos y rápidamente se expandió hacia una curiosidad por comprender cómo funciona todo el ecosistema tecnológico, desde la electrónica y el hardware hasta la lógica pura del software.",
         "sobre_mi_p2": "He decidido enfocar mi carrera en el desarrollo backend, especializándome en el manejo avanzado de bases de datos, lenguaje Java y el intercambio eficiente de información. Me considero una persona meticulosa y detallista; si identifico algo que se puede mejorar, analizo el problema hasta encontrar la solución más óptima posible.",
         "sobre_mi_p3": "Actualmente busco integrarme al ámbito profesional, ya sea en roles de desarrollo backend, control de calidad (testing de validación o rendimiento) o mediante una pasantía. Mi objetivo es aportar mi capacidad analítica a un entorno laboral dinámico, sin dejar de lado mi formación continua en software y, a futuro, en ingeniería eléctrica.",
-        
+
         // --- Habilidades ---
         "hab_title": "<i class=\"fas fa-tools\"></i> Habilidades Técnicas & Entornos",
         "hab_backend": "Backend",
@@ -33,9 +33,9 @@ const dictionary = {
         "hab_devops": "DevOps & Herramientas",
         "hab_hardware": "Hardware & Electrónica",
         "hab_learning": "Actualmente explorando & aprendiendo",
-        
+
         // --- Proyecto Destacado ---
-        "proj_dest_title": "Proyecto Destacado",
+        "proj_dest_title": "Proyecto Personal Destacado",
         "proj_dest_name": "Pvox - Red Social",
         "proj_dest_desc_p1": "Plataforma de red social orientada a la libre expresión y la interacción asíncrona en tiempo real. Desarrollada con arquitectura modular MVC en PHP puro, API REST y procesamiento distribuido en el cliente.",
         "proj_dest_desc_p2": "Para superar limitaciones de servidores compartidos, emplea <strong>Edge Offloading</strong>: las imágenes se optimizan a WebP usando Canvas API y los videos se transcodifican localmente a 720p mediante un Web Worker de FFmpeg.",
@@ -44,9 +44,9 @@ const dictionary = {
         "btn_visitar_web": "Visitar web",
         "btn_ver_doc": "Ver Documentación",
         "btn_ver_codigo": "Ver Código",
-        
+
         // --- Proyectos Secundarios ---
-        "proj_title": "Proyectos",
+        "proj_title": "Otros Proyectos Personales",
         "proj_tu_barberia_short": "Sistema web multilocal para la gestión y reserva de citas en barberías desarrollado en PHP nativo, con bloqueo dinámico de horarios y autogestión mediante tokens sin registro.",
         "proj_tu_barberia_long": "Incluye administración por sucursal, cálculo dinámico de duración según servicios seleccionados y reprogramación masiva en cascada. El módulo administrativo integra recorte de imágenes para catálogo y gestión de calendario. Maneja estados de citas en tiempo real y arquitectura orientada a objetos en PHP 8.3 con almacenamiento relacional en MariaDB. Desplegado en Alwaysdata con diseño responsivo e integración de librerías como Cropper.js y Flatpickr.",
         "proj_iosolver_short": "Aplicación de escritorio desarrollada en JavaFX y tecnologías web para la resolución, simulación y análisis paso a paso de problemas de Investigación de Operaciones y Optimización Matemática.",
@@ -62,7 +62,7 @@ const dictionary = {
         "btn_ver_menos": "<i class=\"fas fa-chevron-up\"></i> Menos",
         "btn_ver_mas_proyectos": "Ver más proyectos <i class=\"fas fa-chevron-down\"></i>",
         "btn_descargar": "Descargar",
-        
+
         // --- Experiencia ---
         "exp_title": "<i class=\"fas fa-briefcase\"></i>Experiencia",
         "exp_camei_role": "Pasante - Auxiliar Administrativo",
@@ -73,7 +73,7 @@ const dictionary = {
         "exp_mercado_date": "Ene 2021 - Presente",
         "exp_mercado_p1": "Asesoré a los clientes en la selección de productos garantizando una experiencia de compra eficiente.",
         "exp_mercado_p2": "Manejé inventario y reabastecimiento en punto de venta asegurando disponibilidad continua.",
-        
+
         // --- Educación ---
         "edu_title": "<i class=\"fas fa-graduation-cap\"></i> Educación",
         "edu_ug_name": "Universidad de Guayaquil",
@@ -85,13 +85,10 @@ const dictionary = {
         "edu_slim_btn": "Ver Certificado Oficial",
         "edu_28_title": "Bachiller Técnico en Contabilidad",
         "edu_28_date": "Graduado",
-        
-        // --- Aptitudes y Disponibilidad ---
-        "disp_title": "<i class=\"fas fa-clock\"></i> Disponibilidad",
-        "disp_type": "Tiempo completo",
-        "disp_desc": "En receso académico, con libertad de ajustar la jornada universitaria fija según la necesidad del empleador.",
+
+        // --- Aptitudes ---
         "apt_title": "<i class=\"fas fa-brain\"></i> Aptitudes Clave",
-        
+
         // --- Contacto y Footer ---
         "contact_title": "Contactos",
         "contact_subtitle": "<strong>¿Tienes algún proyecto o consulta?</strong><br> Elige tu canal preferido:",
@@ -111,21 +108,21 @@ const dictionary = {
         "nav_contacto": "Contact",
         "nav_descargar_cv": "Download CV <i class=\"fas fa-arrow-down\"></i>",
         "nav_modo_oscuro": "Dark Mode",
-        
+
         // --- Hero ---
         "hero_greeting": "Hi, my name is",
         "hero_name": "Rafael Olvera.",
         "hero_subtitle": "I build things for the web.",
         "hero_desc": "Software Engineering student with a strong focus on backend development and quality assurance. I combine great attention to detail with the ability to solve complex problems, seeking to provide value through precise and efficient solutions.",
         "hero_btn": "View my projects",
-        
+
         // --- Sobre Mí ---
         "sobre_mi_title": "About Me",
         "sobre_mi_location": "<i class=\"fas fa-map-marker-alt\"></i> Guayaquil, Ecuador",
         "sobre_mi_p1": "My passion for technology began with an interest in video game creation and quickly expanded into a curiosity to understand how the entire technological ecosystem works, from electronics and hardware to the pure logic of software.",
         "sobre_mi_p2": "I have decided to focus my career on backend development, specializing in advanced database management, Java programming language, and efficient information exchange. I consider myself a meticulous and detail-oriented person; if I identify something that can be improved, I analyze the problem until I find the most optimal solution possible.",
         "sobre_mi_p3": "I am currently looking to integrate into the professional field, whether in backend development roles, quality control (validation or performance testing), or through an internship. My goal is to contribute my analytical capacity to a dynamic work environment, without neglecting my continuous education in software and, in the future, electrical engineering.",
-        
+
         // --- Habilidades ---
         "hab_title": "<i class=\"fas fa-tools\"></i> Technical Skills & Environments",
         "hab_backend": "Backend",
@@ -134,9 +131,9 @@ const dictionary = {
         "hab_devops": "DevOps & Tools",
         "hab_hardware": "Hardware & Electronics",
         "hab_learning": "Currently Exploring & Learning",
-        
+
         // --- Proyecto Destacado ---
-        "proj_dest_title": "Featured Project",
+        "proj_dest_title": "Featured Personal Project",
         "proj_dest_name": "Pvox - Social Network",
         "proj_dest_desc_p1": "Social network platform oriented towards free expression and real-time asynchronous interaction. Developed with a modular MVC architecture in pure PHP, REST API, and distributed processing on the client.",
         "proj_dest_desc_p2": "To overcome shared server limitations, it uses <strong>Edge Offloading</strong>: images are optimized to WebP using the Canvas API and videos are transcoded locally to 720p through an FFmpeg Web Worker.",
@@ -145,9 +142,9 @@ const dictionary = {
         "btn_visitar_web": "Visit Website",
         "btn_ver_doc": "View Documentation",
         "btn_ver_codigo": "View Code",
-        
+
         // --- Proyectos Secundarios ---
-        "proj_title": "Projects",
+        "proj_title": "Other Personal Projects",
         "proj_tu_barberia_short": "Multi-location web system for barbershop appointment management and booking developed in native PHP, featuring dynamic schedule blocking and self-management via tokens without registration.",
         "proj_tu_barberia_long": "Includes branch administration, dynamic duration calculation based on selected services, and massive cascading rescheduling. The administrative module integrates image cropping for catalogs and calendar management. It handles real-time appointment states and object-oriented architecture in PHP 8.3 with relational storage in MariaDB. Deployed on Alwaysdata with responsive design and integration of libraries like Cropper.js and Flatpickr.",
         "proj_iosolver_short": "Desktop application developed in JavaFX and web technologies for solving, simulating, and step-by-step analyzing Operations Research and Mathematical Optimization problems.",
@@ -163,7 +160,7 @@ const dictionary = {
         "btn_ver_menos": "<i class=\"fas fa-chevron-up\"></i> Show less",
         "btn_ver_mas_proyectos": "View more projects <i class=\"fas fa-chevron-down\"></i>",
         "btn_descargar": "Download",
-        
+
         // --- Experiencia ---
         "exp_title": "<i class=\"fas fa-briefcase\"></i>Experience",
         "exp_camei_role": "Intern - Administrative Assistant",
@@ -174,7 +171,7 @@ const dictionary = {
         "exp_mercado_date": "Jan 2021 - Present",
         "exp_mercado_p1": "Advised customers on product selection, guaranteeing an efficient shopping experience.",
         "exp_mercado_p2": "Managed inventory and restocking at the point of sale, ensuring continuous availability.",
-        
+
         // --- Educación ---
         "edu_title": "<i class=\"fas fa-graduation-cap\"></i> Education",
         "edu_ug_name": "University of Guayaquil",
@@ -186,13 +183,10 @@ const dictionary = {
         "edu_slim_btn": "View Official Certificate",
         "edu_28_title": "Technical Baccalaureate in Accounting",
         "edu_28_date": "Graduated",
-        
+
         // --- Aptitudes y Disponibilidad ---
-        "disp_title": "<i class=\"fas fa-clock\"></i> Availability",
-        "disp_type": "Full-time",
-        "disp_desc": "On academic break, with the freedom to adjust the fixed university schedule according to the employer's needs.",
         "apt_title": "<i class=\"fas fa-brain\"></i> Key Aptitudes",
-        
+
         // --- Contacto y Footer ---
         "contact_title": "Contact",
         "contact_subtitle": "<strong>Have a project or inquiry?</strong><br> Choose your preferred channel:",
@@ -206,10 +200,10 @@ const dictionary = {
 function changeLanguage(lang) {
     // 1. Guardar preferencia en localStorage
     localStorage.setItem('lang', lang);
-    
+
     // 2. Cambiar atributo lang del HTML
     document.documentElement.lang = lang;
-    
+
     // 3. Buscar todos los elementos con data-i18n y reemplazar su texto
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
