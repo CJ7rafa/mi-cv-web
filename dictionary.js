@@ -47,16 +47,24 @@ const dictionary = {
 
         // --- Proyectos Secundarios ---
         "proj_title": "Otros Proyectos Personales",
+
         "proj_tu_barberia_short": "Sistema web multilocal para la gestión y reserva de citas en barberías desarrollado en PHP nativo, con bloqueo dinámico de horarios y autogestión mediante tokens sin registro.",
         "proj_tu_barberia_long": "Incluye administración por sucursal, cálculo dinámico de duración según servicios seleccionados y reprogramación masiva en cascada. El módulo administrativo integra recorte de imágenes para catálogo y gestión de calendario. Maneja estados de citas en tiempo real y arquitectura orientada a objetos en PHP 8.3 con almacenamiento relacional en MariaDB. Desplegado en Alwaysdata con diseño responsivo e integración de librerías como Cropper.js y Flatpickr.",
+
         "proj_iosolver_short": "Aplicación de escritorio desarrollada en JavaFX y tecnologías web para la resolución, simulación y análisis paso a paso de problemas de Investigación de Operaciones y Optimización Matemática.",
         "proj_iosolver_long": "Implementa una arquitectura híbrida desacoplada mediante un puente bidireccional entre Java y JavaScript. Integra más de 10 módulos algorítmicos (Programación Lineal, Simplex, Grafos, Colas e Inventarios) junto con un motor estocástico para generación aleatoria de ejercicios. Incorpora visualización interactiva de redes con vis.network, serialización de datos en formato JSON mediante Jackson y compilación automática de bitácoras académicas a reportes PDF vectoriales.",
+
         "proj_cv_web_short": "Sitio web desarrollado desde cero con <strong>HTML5, CSS y JavaScript</strong> puro. Se enfoca en el rendimiento y la estética moderna.",
         "proj_cv_web_long": "Incluye integración de modo oscuro nativo, animaciones dinámicas al hacer scroll y un formulario de contacto completamente funcional sin dependencias pesadas.",
+
         "proj_despacho_short": "Sistema Integral de Gestión Académica (Java). Permite la administración de entidades mediante la implementación manual de <strong>listas, pilas y colas</strong>, optimizando la gestión de memoria.",
         "proj_despacho_long": "Incluye módulos de búsqueda optimizada, algoritmos recursivos y una interfaz gráfica desarrollada en <strong>Swing (JFrames)</strong> con validación estricta de datos para garantizar la integridad de la información.",
+
+        "proj_saldook_short": "SaldoOk es una aplicación de escritorio para llevar el control de finanzas personales y comerciales. Cuenta con módulos integrados para gestionar Compras, Gastos, Flujo de Caja y un Estado de Resultados automatizado.",
+
         "proj_pvox_mobile_short": "Versión mobile de la red social Pvox.",
         "proj_pvox_mobile_img": "PRÓXIMAMENTE",
+
         "btn_leer_mas": "Leer más",
         "btn_ver_menos_text": "Ver menos",
         "btn_ver_menos": "<i class=\"fas fa-chevron-up\"></i> Menos",
@@ -147,14 +155,21 @@ const dictionary = {
         "proj_title": "Other Personal Projects",
         "proj_tu_barberia_short": "Multi-location web system for barbershop appointment management and booking developed in native PHP, featuring dynamic schedule blocking and self-management via tokens without registration.",
         "proj_tu_barberia_long": "Includes branch administration, dynamic duration calculation based on selected services, and massive cascading rescheduling. The administrative module integrates image cropping for catalogs and calendar management. It handles real-time appointment states and object-oriented architecture in PHP 8.3 with relational storage in MariaDB. Deployed on Alwaysdata with responsive design and integration of libraries like Cropper.js and Flatpickr.",
+
         "proj_iosolver_short": "Desktop application developed in JavaFX and web technologies for solving, simulating, and step-by-step analyzing Operations Research and Mathematical Optimization problems.",
         "proj_iosolver_long": "Implements a decoupled hybrid architecture using a bidirectional bridge between Java and JavaScript. Integrates over 10 algorithmic modules (Linear Programming, Simplex, Graphs, Queues, and Inventory) along with a stochastic engine for random exercise generation. Incorporates interactive network visualization with vis.network, JSON data serialization via Jackson, and automatic compilation of academic logs into vector PDF reports.",
+
         "proj_cv_web_short": "Website developed from scratch using pure <strong>HTML5, CSS, and JavaScript</strong>. Focuses on performance and modern aesthetics.",
         "proj_cv_web_long": "Includes native dark mode integration, dynamic scroll animations, and a fully functional contact form without heavy dependencies.",
+
         "proj_despacho_short": "Comprehensive Academic Management System (Java). Allows entity administration through the manual implementation of <strong>lists, stacks, and queues</strong>, optimizing memory management.",
         "proj_despacho_long": "Includes optimized search modules, recursive algorithms, and a graphical interface developed in <strong>Swing (JFrames)</strong> with strict data validation to ensure information integrity.",
+
+        "proj_saldook_short": "SaldoOk is a desktop application for tracking personal and business finances. It features integrated modules for managing purchases, expenses, and cash flow, as well as an automated income statement.",
+
         "proj_pvox_mobile_short": "Mobile version of the Pvox social network.",
         "proj_pvox_mobile_img": "COMING SOON",
+
         "btn_leer_mas": "Read more",
         "btn_ver_menos_text": "Read less",
         "btn_ver_menos": "<i class=\"fas fa-chevron-up\"></i> Show less",
